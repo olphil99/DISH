@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,13 +15,10 @@ import com.example.dish.R;
 
 
 public class createPostFragment extends Fragment {
-
-    private createPostViewModel createPostVM;
-
+    //private createPostViewModel createPostVM;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        createPostVM =
-                new ViewModelProvider(this).get(createPostViewModel.class);
+        //createPostVM = new ViewModelProvider(this).get(createPostViewModel.class);
         View root = inflater.inflate(R.layout.fragment_create_post, container, false);
         /*
         final TextView textView = root.findViewById(R.id.create_post);
@@ -29,6 +28,14 @@ public class createPostFragment extends Fragment {
                 textView.setText(s);
             }
         });*/
+
+        final Button btCreatePost = root.findViewById(R.id.btCreatePost);
+        btCreatePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(root.getContext(), "Posted", Toast.LENGTH_LONG).show();
+            }
+        });
         return root;
     }
 }

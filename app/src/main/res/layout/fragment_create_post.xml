@@ -7,4 +7,120 @@
     tools:context=".ui.createPost.createPostFragment">
 
 
+    <TextView
+        android:id="@+id/tvCreatePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Post"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rgDonationEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/tvCreatePost"
+        app:layout_constraintStart_toStartOf="@+id/tvCreatePost"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreatePost">
+
+        <RadioButton
+            android:id="@+id/rbDonation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Donation" />
+
+        <RadioButton
+            android:id="@+id/rbEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Event" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Your title"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/rgDonationEvent"
+        app:layout_constraintStart_toStartOf="@+id/rgDonationEvent"
+        app:layout_constraintTop_toBottomOf="@+id/rgDonationEvent" />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Your story"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:minLines="2"
+        app:layout_constraintEnd_toEndOf="@+id/etTitle"
+        app:layout_constraintStart_toStartOf="@+id/etTitle"
+        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+
+    <EditText
+        android:id="@+id/etLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Location"
+        android:inputType="textPostalAddress"
+        app:layout_constraintEnd_toEndOf="@+id/etDescription"
+        app:layout_constraintStart_toStartOf="@+id/etDescription"
+        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+
+    <EditText
+        android:id="@+id/etDueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Due date"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/etLocation"
+        app:layout_constraintStart_toStartOf="@+id/etLocation"
+        app:layout_constraintTop_toBottomOf="@+id/etLocation" />
+
+    <EditText
+        android:id="@+id/etGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Amount/Volunteers"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/etDueDate"
+        app:layout_constraintStart_toStartOf="@+id/etDueDate"
+        app:layout_constraintTop_toBottomOf="@+id/etDueDate" />
+
+    <EditText
+        android:id="@+id/etTags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Your tags"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/etGoal"
+        app:layout_constraintStart_toStartOf="@+id/etGoal"
+        app:layout_constraintTop_toBottomOf="@+id/etGoal" />
+
+    <Button
+        android:id="@+id/btCreatePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POST"
+        app:layout_constraintEnd_toEndOf="@+id/etTags"
+        app:layout_constraintStart_toStartOf="@+id/etTags"
+        app:layout_constraintTop_toBottomOf="@+id/etTags" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
