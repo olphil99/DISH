@@ -300,7 +300,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/llEntries"
                 app:layout_constraintStart_toStartOf="@+id/llEntries"
                 app:layout_constraintTop_toBottomOf="@+id/llEntries"
-                />
+                android:layout_marginBottom="60dp"/>
 
         </LinearLayout>
 
