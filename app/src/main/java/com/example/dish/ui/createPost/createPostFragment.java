@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +31,35 @@ public class createPostFragment extends Fragment {
                 textView.setText(s);
             }
         });*/
+
+        final RadioGroup postTypeRadioGroup = root.findViewById(R.id.rgDonationEvent);
+        final RadioButton donationButton = root.findViewById(R.id.rbDonation);
+        final RadioButton eventButton = root.findViewById(R.id.rbEvent);
+        final LinearLayout postEntries = (LinearLayout) root.findViewById(R.id.create_post_entries);
+        final LinearLayout donationEntries = (LinearLayout) root.findViewById(R.id.create_post_donation_entries);
+        final LinearLayout eventEntries = (LinearLayout) root.findViewById(R.id.create_post_event_entries);
+        // donation selected by default
+        donationEntries.setVisibility(View.VISIBLE);
+        eventEntries.setVisibility(View.GONE);
+        donationButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Toast.makeText(root.getContext(), "clicked donation", Toast.LENGTH_LONG).show();
+                if (donationEntries.getVisibility() != View.VISIBLE) {
+                    donationEntries.setVisibility(View.VISIBLE);
+                    eventEntries.setVisibility(View.GONE);
+                }
+            }
+        });
+        eventButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Toast.makeText(root.getContext(), "clicked event", Toast.LENGTH_LONG).show();
+                if (eventEntries.getVisibility() != View.VISIBLE) {
+                    eventEntries.setVisibility(View.VISIBLE);
+                    donationEntries.setVisibility(View.GONE);
+                }
+            }
+        });
+
 
         final Button btCreatePost = root.findViewById(R.id.btCreatePost);
         btCreatePost.setOnClickListener(new View.OnClickListener() {

@@ -6,121 +6,370 @@
     android:layout_height="match_parent"
     tools:context=".ui.createPost.createPostFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvCreatePost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Post"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/rgDonationEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/tvCreatePost"
-        app:layout_constraintStart_toStartOf="@+id/tvCreatePost"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreatePost">
-
-        <RadioButton
-            android:id="@+id/rbDonation"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Donation" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal" >
 
-        <RadioButton
-            android:id="@+id/rbEvent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Event" />
-    </RadioGroup>
+            <TextView
+                android:id="@+id/tvCreatePost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Post"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="50dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Your title"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/rgDonationEvent"
-        app:layout_constraintStart_toStartOf="@+id/rgDonationEvent"
-        app:layout_constraintTop_toBottomOf="@+id/rgDonationEvent" />
+            <RadioGroup
+                android:id="@+id/rgDonationEvent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginHorizontal="60dp"
+                android:checkedButton="@id/rbDonation" >
 
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Your story"
-        android:inputType="textMultiLine"
-        android:maxLines="3"
-        android:minLines="2"
-        app:layout_constraintEnd_toEndOf="@+id/etTitle"
-        app:layout_constraintStart_toStartOf="@+id/etTitle"
-        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+                <RadioButton
+                    android:id="@+id/rbDonation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Donation"
+                    android:textSize="16sp" />
 
-    <EditText
-        android:id="@+id/etLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Location"
-        android:inputType="textPostalAddress"
-        app:layout_constraintEnd_toEndOf="@+id/etDescription"
-        app:layout_constraintStart_toStartOf="@+id/etDescription"
-        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+                <RadioButton
+                    android:id="@+id/rbEvent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Event"
+                    android:textSize="16sp" />
 
-    <EditText
-        android:id="@+id/etDueDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Due date"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="@+id/etLocation"
-        app:layout_constraintStart_toStartOf="@+id/etLocation"
-        app:layout_constraintTop_toBottomOf="@+id/etLocation" />
+            </RadioGroup>
 
-    <EditText
-        android:id="@+id/etGoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Amount/Volunteers"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/etDueDate"
-        app:layout_constraintStart_toStartOf="@+id/etDueDate"
-        app:layout_constraintTop_toBottomOf="@+id/etDueDate" />
+            <LinearLayout
+                android:id="@+id/create_post_entries"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginHorizontal="60dp"
+                app:layout_constraintEnd_toEndOf="@+id/rgDonationEvent"
+                app:layout_constraintStart_toStartOf="@+id/rgDonationEvent"
+                app:layout_constraintTop_toBottomOf="@+id/rgDonationEvent">
 
-    <EditText
-        android:id="@+id/etTags"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Your tags"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/etGoal"
-        app:layout_constraintStart_toStartOf="@+id/etGoal"
-        app:layout_constraintTop_toBottomOf="@+id/etGoal" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/create_post_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Title"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    <Button
-        android:id="@+id/btCreatePost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="POST"
-        app:layout_constraintEnd_toEndOf="@+id/etTags"
-        app:layout_constraintStart_toStartOf="@+id/etTags"
-        app:layout_constraintTop_toBottomOf="@+id/etTags" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/create_post_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:maxLines="3" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/create_post_donation_entries"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical" >
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/create_post_donation_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Goal amount"
+                        app:prefixText="$"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/create_post_donation_exp_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        app:startIconDrawable="@drawable/ic_today_black"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Expiration date" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/create_post_event_entries"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical" >
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/create_post_event_volunteers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Number of volunteers"
+                        app:startIconDrawable="@drawable/ic_groups_black"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/create_post_event_start_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        app:startIconDrawable="@drawable/ic_today_black"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Start date" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/create_post_event_end_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        app:startIconDrawable="@drawable/ic_today_black"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="End date" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="left"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:id="@+id/create_post_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_add_a_photo_black"
+                        android:background="@drawable/shape_circle_button"
+                        android:padding="12dp"
+                        android:layout_marginRight="20dp" />
+
+        <!--            <ImageView-->
+        <!--                android:layout_width="48dp"-->
+        <!--                android:layout_height="48dp"-->
+        <!--                android:scaleType="centerInside"-->
+        <!--                android:src="@mipmap/ic_launcher"-->
+        <!--                android:id="@+id/iv"-->
+        <!--                android:layout_marginRight="20dp" />-->
+
+                    <ImageButton
+                        android:id="@+id/create_post_link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_add_link_black"
+                        android:background="@drawable/shape_circle_button"
+                        android:padding="12dp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilTags"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Tags"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Select Tags" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:startIconDrawable="@drawable/ic_label_black"
+                        app:startIconContentDescription="label icon">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rent"
+                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Medical"
+                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Education"
+                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pet"
+                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Memorial"
+                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Emergency fund"
+                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+<!--    <EditText-->
+<!--        android:id="@+id/etTitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Title"-->
+<!--        android:inputType="textPersonName"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/rgDonationEvent"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/rgDonationEvent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/rgDonationEvent" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/etDescription"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:ems="10"-->
+<!--        android:gravity="start|top"-->
+<!--        android:hint="Description"-->
+<!--        android:inputType="textMultiLine"-->
+<!--        android:maxLines="3"-->
+<!--        android:minLines="2"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/etTitle"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/etTitle"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etTitle" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/etLocation"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Location"-->
+<!--        android:inputType="textPostalAddress"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/etDescription"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/etDescription"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etDescription" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/etDueDate"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Due date"-->
+<!--        android:inputType="date"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/etLocation"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/etLocation"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etLocation" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/etGoal"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Amount"-->
+<!--        android:inputType="number"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/etDueDate"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/etDueDate"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etDueDate" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/etTags"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Tags"-->
+<!--        android:inputType="textPersonName"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/etGoal"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/etGoal"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etGoal" />-->
+
+            <Button
+                android:id="@+id/btCreatePost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="POST"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/llEntries"
+                app:layout_constraintStart_toStartOf="@+id/llEntries"
+                app:layout_constraintTop_toBottomOf="@+id/llEntries"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
