@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DISH</string>
-    <string name="title_Browse">Browse</string>
-    <string name="title_Profile">Profile</string>
-    <string name="title_Forum">Forum</string>
+    <string name="title_browse">Browse</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_forum">Forum</string>
 </resources>
