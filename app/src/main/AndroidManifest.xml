@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DISH">
+        <activity android:name=".ui.postDetail.PostActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

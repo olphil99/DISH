@@ -1,6 +1,7 @@
 package com.example.dish.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dish.R;
+import com.example.dish.ui.postDetail.PostActivity;
 
 import java.util.ArrayList;
 
@@ -23,7 +25,6 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
     private Context context;
     public PostsRecViewAdapter(Context context) {
         this.context = context;
-
     }
 
     @NonNull
@@ -39,7 +40,8 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, posts.get(position).getTitle() + " Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, PostActivity.class);
+                context.startActivity(intent);
             }
         });
     }
