@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -55,12 +55,13 @@
             android:layout_below="@+id/tvExpire"
             android:layout_toRightOf="@+id/tvTextGoal"
             android:text="1000"/>
-        <ProgressBar
+        <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
+            android:progress="30"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/postImage" />
+            android:layout_below="@+id/postImage"
+            app:trackThickness="10dp"/>
     </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
