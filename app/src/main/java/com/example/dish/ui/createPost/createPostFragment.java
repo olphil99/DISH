@@ -134,7 +134,7 @@ public class createPostFragment extends Fragment {
         btCreatePost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(root.getContext(), "Posted", Toast.LENGTH_LONG).show();
+//                Toast.makeText(root.getContext(), "Posted", Toast.LENGTH_LONG).show();
             }
         });
         return root;

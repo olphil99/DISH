@@ -198,6 +198,20 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/create_post_event_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Location"
+                        app:startIconDrawable="@drawable/ic_outline_house_black"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/create_post_recurrence_menu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -214,20 +228,44 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/create_post_event_time"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Time (HH:MM)"
-                        app:startIconDrawable="@drawable/ic_schedule_black"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+                        android:orientation="horizontal" >
 
-                        <EditText
-                            android:layout_width="match_parent"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/create_post_event_start_time"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="time" />
+                            android:layout_weight="1"
+                            android:hint="Start time"
+                            app:startIconDrawable="@drawable/ic_schedule_black"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="time" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/create_post_event_end_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="End time"
+                            app:startIconDrawable="@drawable/ic_schedule_black"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="time" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/create_post_event_start_date"
@@ -314,7 +352,7 @@
                             android:id="@+id/chip6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Emergency fund"
+                            android:text="Food"
                             style="@style/Widget.MaterialComponents.Chip.Choice" />
 
                     </com.google.android.material.chip.ChipGroup>
