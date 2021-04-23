@@ -36,11 +36,19 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //TODO: setText for more textView
         holder.tvTitle.setText(posts.get(position).getTitle());
+        holder.tvGoal.setText(String.valueOf(posts.get(position).getGoal()));
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO : putExtra for more parameters
                 Intent intent = new Intent(context, PostActivity.class);
+                intent.putExtra("title", posts.get(position).getTitle());
+                intent.putExtra("goal", posts.get(position).getGoal());
+                intent.putExtra("type", posts.get(position).getType());
+                intent.putExtra("creator", posts.get(position).getCreator());
+
                 context.startActivity(intent);
             }
         });
@@ -57,11 +65,13 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvTitle;
+        private TextView tvTitle, tvGoal;
         private CardView parent;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            //TODO : initialize more textview
             tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvGoal = itemView.findViewById(R.id.tvGoal);
             parent = itemView.findViewById(R.id.cvPost);
         }
     }

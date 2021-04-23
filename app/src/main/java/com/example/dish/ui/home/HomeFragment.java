@@ -33,8 +33,8 @@ public class HomeFragment extends Fragment {
         postsRecView = root.findViewById(R.id.postsRecView);
         ArrayList<Post> posts = new ArrayList<>();
         posts.add(new Post("Amy", 1, "NEED FISH ON DISH", "This is a very long description", "#FISH", "donation", "https", 99));
-        posts.add(new Post("Food Bank", 2, "FOOD FOR MOOD", "This is a very long description", "#FOOD", "event", "https", 0));
-        posts.add(new Post("TTP", 3, "SHOW ME THE MONEY", "This is a very long description", "#MONEY", "donation", "https", 10000000));
+        posts.add(new Post("Food Bank", 2, "FOOD FOR MOOD", "This is a very long description", "#FOOD", "event", "https", 100));
+        posts.add(new Post("TTP", 3, "SHOW ME THE MONEY", "This is a very long description", "#MONEY", "donation", "https", 10000));
         posts.add(new Post("Brian", 4, "FREE MASKS", "This is a very long description", "#MASK", "event", "https", 10));
         posts.add(new Post("Emily", 5, "STUDIO", "This is a very long description", "#AAA", "event", "https", 10));
         posts.add(new Post("Emily2", 6, "TEST", "This is a very long description", "#AAA", "event", "https", 10));
