@@ -109,7 +109,7 @@
                         android:drawableLeft="@drawable/ic_add_a_photo_black"
                         android:text="Add photo"
                         android:textAllCaps="false"
-                        android:textColor="?android:attr/textColorHint"
+                        android:textColor="@color/black"
                         android:backgroundTint="@color/white"
                         android:layout_marginRight="15dp"/>
 
@@ -122,6 +122,20 @@
                         android:layout_marginRight="20dp" />
 
                 </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/create_post_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/ic_add_link_black"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Donation/event url" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
                     android:id="@+id/create_post_donation_entries"
@@ -184,6 +198,38 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/create_post_recurrence_menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Recurring event"
+                        android:layout_marginTop="10dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu" >
+
+                        <AutoCompleteTextView
+                            android:id="@+id/create_post_recurrence_dropdown"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/create_post_event_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Time (HH:MM)"
+                        app:startIconDrawable="@drawable/ic_schedule_black"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="time" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/create_post_event_start_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -214,20 +260,6 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/create_post_url"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_add_link_black"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Donation/event url" />
-
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilTags"
@@ -289,18 +321,18 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-            </LinearLayout>
+                <Button
+                    android:id="@+id/btCreatePost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="POST"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="@+id/llEntries"
+                    app:layout_constraintStart_toStartOf="@+id/llEntries"
+                    app:layout_constraintTop_toBottomOf="@+id/llEntries"
+                    android:layout_marginBottom="60dp"/>
 
-            <Button
-                android:id="@+id/btCreatePost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="POST"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/llEntries"
-                app:layout_constraintStart_toStartOf="@+id/llEntries"
-                app:layout_constraintTop_toBottomOf="@+id/llEntries"
-                android:layout_marginBottom="60dp"/>
+            </LinearLayout>
 
         </LinearLayout>
 
