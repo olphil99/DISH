@@ -25,11 +25,11 @@
 
                 <!-- Media -->
                 <ImageView
+                    android:id="@+id/ivPostPicture"
                     android:layout_width="match_parent"
                     android:layout_height="194dp"
-                    app:srcCompat="@drawable/ic_home_black_24dp"
-                    android:scaleType="centerCrop"
-                    android:id="@+id/ivPostPicture" />
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_home_black_24dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -38,103 +38,134 @@
                     android:padding="16dp">
 
                     <TextView
+                        android:id="@+id/txtTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/amatic_sc_bold"
                         android:text="Title"
+                        android:layout_gravity="center"
+
                         android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:id="@+id/txtTitle" />
+                        android:textSize="46sp" />
+
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="8dp">
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Start: " />
+                            android:text="Start : "
+                            android:textColor="@color/teal_200" />
+
                         <TextView
+                            android:id="@+id/txtStartingTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="7:30 AM 4/22/2022"
-                            android:id="@+id/txtStartingTime" />
+                            android:textAlignment="viewStart" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="End  : " />
+                            android:text="End : "
+                            android:textColor="@color/teal_200" />
+
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:id="@+id/txtEndingTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="9:30 PM 4/22/2022" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Location : " />
+                            android:text="Location : "
+                            android:textColor="@color/teal_200" />
+
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:id="@+id/txtLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="...Chicago, Illinois" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Hosted by " />
+                            android:text="Hosted by "
+                            android:textColor="@color/teal_200" />
+
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:id="@+id/txtHost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="UIUC" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Goal: " />
+                            android:text="Goal : "
+                            android:textColor="@color/teal_200" />
+
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:id="@+id/txtGoal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Goal" />
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/txtDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtDescription"
-                        android:text="A very long description"/>
+                        android:layout_marginTop="10dp"
+                        android:text="A very long description"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/txtCurrentProgress"
-                        android:text="500 people are going" />
+                        android:text="500 people are going"
+                        android:layout_marginTop="10dp"/>
 
                     <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progressBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/progressBar"/>
+                        android:progressTint="@color/teal_200" />
                 </LinearLayout>
 
 
@@ -143,14 +174,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:layout_gravity="center"
                     android:orientation="horizontal">
+
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btAccept"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:text="ACCEPT"
-                        android:id="@+id/btAccept"
-                        />
+                        app:backgroundTint="@color/purple_500" />
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
