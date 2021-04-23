@@ -38,103 +38,135 @@
                     android:padding="16dp">
 
                     <TextView
+                        android:id="@+id/txtTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
                         android:text="Title"
                         android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:id="@+id/txtTitle" />
+                        android:textSize="22sp" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="8dp">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Start: " />
+                            android:text="Start: "
+                            android:textSize="16sp" />
+
                         <TextView
+                            android:id="@+id/txtStartingTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="7:30 AM 4/22/2022"
-                            android:id="@+id/txtStartingTime" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="2dp">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="End  : " />
+                            android:text="End  : "
+                            android:textSize="16sp" />
+
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:id="@+id/txtEndingTime"
-                            android:text="9:30 PM 4/22/2022" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9:30 PM 4/22/2022"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Location : " />
+                            android:text="Location : "
+                            android:textSize="16sp" />
+
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:id="@+id/txtLocation"
-                            android:text="...Chicago, Illinois" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="...Chicago, Illinois"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Hosted by " />
+                            android:text="Hosted by "
+                            android:textSize="16sp" />
+
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:id="@+id/txtHost"
-                            android:text="UIUC" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="UIUC"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Goal: " />
+                            android:text="Goal: "
+                            android:textSize="16sp" />
+
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:id="@+id/txtGoal"
-                            android:text="Goal" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Goal"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/txtDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtDescription"
-                        android:text="A very long description"/>
+                        android:layout_marginTop="8dp"
+                        android:text="A very long description"
+                        android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/txtCurrentProgress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtCurrentProgress"
-                        android:text="500 people are going" />
+                        android:layout_marginTop="8dp"
+                        android:text="500 people are going"
+                        android:textSize="16sp" />
 
                     <com.google.android.material.progressindicator.LinearProgressIndicator
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/progressBar"/>
+                        android:id="@+id/progressBar"
+                        app:trackThickness="10dp"
+                        android:layout_marginTop="8dp"/>
                 </LinearLayout>
 
 
@@ -142,28 +174,33 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btAccept"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:text="ACCEPT"
-                        android:id="@+id/btAccept"
-                        />
+                        android:textSize="16sp"
+                        app:backgroundTint="@color/green" />
+
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btDonate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:text="DONATE"
-                        android:id="@+id/btDonate"
-                        />
+                        android:textSize="16sp"
+                        app:backgroundTint="@color/green"/>
+
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btShare"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="SHARE"
-                        android:id="@+id/btShare"
-                        />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
             </LinearLayout>
