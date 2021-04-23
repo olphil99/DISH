@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dish.R;
 import com.example.dish.ui.home.Post;
@@ -20,6 +19,7 @@ public class PostActivity extends AppCompatActivity {
     private TextView txtTitle, txtStart, txtEnd, txtDescription, txtLocation, txtHost, txtGoal, txtCurrentProgress;
     private Button btAccept, btShare, btDonate;
     private LinearProgressIndicator progressBar;
+    private int prog;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +37,29 @@ public class PostActivity extends AppCompatActivity {
             btDonate.setVisibility(View.GONE);
         }
 
+
+        //TODO: Change the parameters for setProgress
         btAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(btAccept.getText().toString().equals("ACCEPT")) {
                     btAccept.setText("QUIT");
                     btAccept.setBackgroundColor(getResources().getColor(R.color.red));
+                    post.setCurrentProgress(post.getCurrentProgress() + 1);
+                    txtCurrentProgress.setText(String.valueOf((int)post.getCurrentProgress()) + " people are going");
+                    progressBar.setProgress(1, true);
+
                 }
                 else{
                     btAccept.setText("ACCEPT");
                     btAccept.setBackgroundColor(getResources().getColor(R.color.green));
+                    post.setCurrentProgress(post.getCurrentProgress() - 1);
+                    txtCurrentProgress.setText(String.valueOf((int)post.getCurrentProgress()) + " people are going");
+                    progressBar.setProgress(0, true);
                 }
-
             }
         });
+        //TODO: Handle the btShare and btDonate
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -60,13 +69,14 @@ public class PostActivity extends AppCompatActivity {
         txtHost.setText(post.getCreator());
         if(post.getType().equals("donation")) {
             txtGoal.setText("$ " + String.valueOf(post.getGoal()));
-            txtCurrentProgress.setText("$ 30");
+            txtCurrentProgress.setText(post.getCurrentProgress() + "$ 30");
         }
         else {
             txtGoal.setText(String.valueOf((int) post.getGoal()) + " volunteers");
-            txtCurrentProgress.setText("500 people are going");
+            txtCurrentProgress.setText(String.valueOf((int)post.getCurrentProgress()) + " people are going");
         }
-        progressBar.setProgress(30, true);
+        prog = (int)(post.getCurrentProgress()/post.getGoal());
+        progressBar.setProgress(prog, true);
     }
     private void initViews() {
         ivPostPicture = findViewById(R.id.ivPostPicture);

@@ -9,6 +9,9 @@ public class Post {
     private String type;
     private String picture_url;
     private double goal;
+    private double currentProgress;
+
+
 
     public Post(String creator, int ID, String title, String body, String tags, String type, String picture_url, double goal) {
         this.creator = creator;
@@ -19,6 +22,7 @@ public class Post {
         this.type = type;
         this.picture_url = picture_url;
         this.goal = goal;
+        this.currentProgress = 0;
     }
 
     public void setCreator(String creator) {
@@ -83,5 +87,13 @@ public class Post {
 
     public double getGoal() {
         return goal;
+    }
+
+    public double getCurrentProgress() {
+        return currentProgress;
+    }
+
+    public void setCurrentProgress(double currentProgress) {
+        this.currentProgress = currentProgress;
     }
 }

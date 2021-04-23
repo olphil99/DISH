@@ -184,7 +184,7 @@
                         android:layout_marginEnd="8dp"
                         android:text="ACCEPT"
                         android:textSize="16sp"
-                        app:backgroundTint="@color/green" />
+                        android:backgroundTint="@color/green" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btDonate"
@@ -193,7 +193,7 @@
                         android:layout_marginEnd="8dp"
                         android:text="DONATE"
                         android:textSize="16sp"
-                        app:backgroundTint="@color/green"/>
+                        android:backgroundTint="@color/green"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btShare"
