@@ -55,7 +55,7 @@ public class createPostFragment extends Fragment {
         eventEntries.setVisibility(View.GONE);
         donationButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(root.getContext(), "clicked donation", Toast.LENGTH_LONG).show();
+//                Toast.makeText(root.getContext(), "clicked donation", Toast.LENGTH_LONG).show();
                 if (donationEntries.getVisibility() != View.VISIBLE) {
                     donationEntries.setVisibility(View.VISIBLE);
                     eventEntries.setVisibility(View.GONE);
@@ -64,7 +64,7 @@ public class createPostFragment extends Fragment {
         });
         eventButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(root.getContext(), "clicked event", Toast.LENGTH_LONG).show();
+//                Toast.makeText(root.getContext(), "clicked event", Toast.LENGTH_LONG).show();
                 if (eventEntries.getVisibility() != View.VISIBLE) {
                     eventEntries.setVisibility(View.VISIBLE);
                     donationEntries.setVisibility(View.GONE);
