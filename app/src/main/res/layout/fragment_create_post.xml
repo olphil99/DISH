@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.createPost.createPostFragment">
+    tools:context=".ui.createPost.createPostFragment"
+    android:overScrollMode="never" >
 
     <ScrollView
         android:layout_width="match_parent"
