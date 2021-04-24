@@ -29,52 +29,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:fontFamily="@font/amatic_sc_bold"
+            android:fontFamily="@font/amatic_sc"
             android:text="Title of the post"
             android:textSize="30sp" />
 
+         <TextView
+            android:id="@+id/tvExpire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/tvDueDate"
+            android:layout_marginTop="10dp"
+            android:text="Expire: "
+            android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tvExpire"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/tvDueDate"
-                    android:layout_marginTop="10dp"
-                    android:text="Expire: "
-                    android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xx/xx/xx"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/purple_200"
+            android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tvDueDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="xx/xx/xx"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="10dp"
-                    android:paddingRight="10dp"
-                    android:textColor="@color/purple_200"
-                    android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvTextGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-70dp"
+            android:layout_toLeftOf="@id/tvGoal"
+            android:layout_below="@id/tvExpire"
+            android:text="Goal: "
+            android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tvTextGoal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="-70dp"
-                    android:layout_toLeftOf="@id/tvGoal"
-                    android:layout_below="@id/tvExpire"
-                    android:text="Goal: "
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tvGoal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1000"
-                    android:layout_alignParentRight="true"
-                    android:paddingRight="10dp"
-                    android:layout_below="@id/tvDueDate"
-                    android:textColor="@color/purple_200"
-                    android:textSize="16sp" />
-
+        <TextView
+            android:id="@+id/tvGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:layout_below="@id/tvDueDate"
+            android:textColor="@color/purple_200"
+            android:textSize="16sp" />
 
         <ProgressBar
             android:id="@+id/progressBar2"
