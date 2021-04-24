@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.forum.ForumFragment"
     android:paddingBottom="50dp"
-    android:overScrollMode="never"  >
+    android:overScrollMode="never" >
 
     <LinearLayout
         android:id="@+id/forumMain"
