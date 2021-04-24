@@ -1,35 +1,24 @@
 package com.example.dish.ui.createPost;
 
-import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.dish.R;
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.Calendar;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -64,7 +53,7 @@ public class createPostFragment extends Fragment {
         eventEntries.setVisibility(View.GONE);
         donationButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-//                Toast.makeText(root.getContext(), "clicked donation", Toast.LENGTH_LONG).show();
+                Toast.makeText(root.getContext(), "clicked donation", Toast.LENGTH_LONG).show();
                 if (donationEntries.getVisibility() != View.VISIBLE) {
                     donationEntries.setVisibility(View.VISIBLE);
                     eventEntries.setVisibility(View.GONE);
@@ -73,7 +62,7 @@ public class createPostFragment extends Fragment {
         });
         eventButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-//                Toast.makeText(root.getContext(), "clicked event", Toast.LENGTH_LONG).show();
+                Toast.makeText(root.getContext(), "clicked event", Toast.LENGTH_LONG).show();
                 if (eventEntries.getVisibility() != View.VISIBLE) {
                     eventEntries.setVisibility(View.VISIBLE);
                     donationEntries.setVisibility(View.GONE);
@@ -96,7 +85,6 @@ public class createPostFragment extends Fragment {
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
-
 
         /* recurrence dropdown menu */
         String[] recurrenceTypes = {"Daily", "Weekly", "Monthly"};
@@ -134,7 +122,7 @@ public class createPostFragment extends Fragment {
         btCreatePost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(root.getContext(), "Posted", Toast.LENGTH_LONG).show();
+                Toast.makeText(root.getContext(), "Posted", Toast.LENGTH_LONG).show();
             }
         });
         return root;
