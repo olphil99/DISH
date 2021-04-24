@@ -1,15 +1,14 @@
 package com.example.dish.ui.createPost;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.dish.R;
 
@@ -87,6 +85,36 @@ public class createPostFragment extends Fragment {
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
+
+        /* recurrence dropdown menu */
+        String[] recurrenceTypes = {"Daily", "Weekly", "Monthly"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                android.R.layout.simple_spinner_item, recurrenceTypes);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        AutoCompleteTextView dropdown = root.findViewById(R.id.create_post_recurrence_dropdown);
+        dropdown.setAdapter(adapter);
+
+
+        /* event time picker doesn't work yet */
+//        EditText eventTimeInput = root.findViewById(R.id.create_post_event_time);
+//        eventTimeInput.setInputType(InputType.TYPE_NULL);
+//        eventTimeInput.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final Calendar cldr = Calendar.getInstance();
+//                int hour = cldr.get(Calendar.HOUR_OF_DAY);
+//                int minutes = cldr.get(Calendar.MINUTE);
+//                // time picker dialog
+//                TimePickerDialog picker = new TimePickerDialog(getActivity().getApplicationContext(),
+//                        new TimePickerDialog.OnTimeSetListener() {
+//                            @Override
+//                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+//                                eventTimeInput.setText(sHour + ":" + sMinute);
+//                            }
+//                        }, hour, minutes, true);
+//                picker.show();
+//            }
+//        });
 
 
         /* POST button */
