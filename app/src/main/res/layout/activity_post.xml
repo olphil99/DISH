@@ -42,7 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/amatic_sc_bold"
+                        android:fontFamily="@font/amatic_sc"
                         android:text="Title"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         android:textSize="46sp" />
