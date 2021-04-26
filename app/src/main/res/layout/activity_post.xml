@@ -158,14 +158,21 @@
                             android:textSize="16sp" />
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txtDescription"
+                    <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="A very long description"
-                        android:textAlignment="viewStart"
-                        android:textSize="16sp" />
+                        android:layout_height="150dp"
+                        android:nestedScrollingEnabled="true">
+                        <TextView
+                            android:id="@+id/txtDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="A very long description"
+                            android:textAlignment="viewStart"
+                            android:textSize="16sp" />
+
+                    </ScrollView>
+
 
                     <TextView
                         android:id="@+id/txtCurrentProgress"
