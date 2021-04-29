@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dish.MainActivity;
 import com.example.dish.R;
 import com.example.dish.ui.home.Post;
 import com.example.dish.ui.home.Utils;
@@ -27,6 +29,7 @@ public class PostActivity extends AppCompatActivity {
     private TextView txtTitle, txtStart, txtEnd, txtDescription, txtLocation, txtHost, txtGoal, txtCurrentProgress;
     private Button btAccept, btShare, btDonate;
     private LinearProgressIndicator progressBar;
+    private ProgressBar progressBar2;
     private TextInputLayout txtInputLayout;
     private TextInputEditText txtInputAmount;
 
@@ -38,7 +41,6 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
         initViews();
-
         Intent intent = getIntent();
         if(intent != null) {
             int postId = intent.getIntExtra("id", -1);
@@ -142,5 +144,12 @@ public class PostActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         txtInputLayout = findViewById(R.id.oTxtFieldAmount);
         txtInputAmount = findViewById(R.id.txtInputAmount);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(PostActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

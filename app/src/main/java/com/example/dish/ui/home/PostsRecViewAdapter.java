@@ -2,26 +2,31 @@ package com.example.dish.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dish.R;
 import com.example.dish.ui.postDetail.PostActivity;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapter.ViewHolder> {
 
-    private ArrayList<Post> posts = new ArrayList<>();
+    private ArrayList<Post> posts;
     private Context context;
     public PostsRecViewAdapter(Context context) {
         this.context = context;
@@ -39,14 +44,14 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
         //TODO: setText for more textView
         holder.tvTitle.setText(posts.get(position).getTitle());
         holder.tvGoal.setText(String.valueOf(posts.get(position).getGoal()));
-        holder.parent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, PostActivity.class);
-                intent.putExtra("id", posts.get(position).getID());
-                context.startActivity(intent);
-            }
+        holder.parent.setOnClickListener(v -> {
+            Intent intent = new Intent(context, PostActivity.class);
+            intent.putExtra("id", posts.get(position).getID());
+            context.startActivity(intent);
+            notifyDataSetChanged();
         });
+        int prog = (int) (posts.get(position).getCurrentProgress() / posts.get(position).getGoal() * 100);
+        Objects.requireNonNull(holder).progressBar.setProgress(prog);
     }
 
     @Override
@@ -62,12 +67,14 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvTitle, tvGoal;
         private CardView parent;
+        private LinearProgressIndicator progressBar;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             //TODO : initialize more textview
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvGoal = itemView.findViewById(R.id.tvGoal);
             parent = itemView.findViewById(R.id.cvPost);
+            progressBar = itemView.findViewById(R.id.progressBar2);
         }
     }
 }
