@@ -91,7 +91,6 @@ public class PostActivity extends AppCompatActivity {
                     }
                 });
 
-                //TODO: Handle the btShare
                 btShare.setOnClickListener(v -> Toast.makeText(PostActivity.this, "SHARED", Toast.LENGTH_SHORT).show());
             }
         }
