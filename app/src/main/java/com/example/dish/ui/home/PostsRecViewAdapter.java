@@ -6,6 +6,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -43,7 +44,16 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //TODO: setText for more textView
         holder.tvTitle.setText(posts.get(position).getTitle());
-        holder.tvGoal.setText(String.valueOf(posts.get(position).getGoal()));
+
+        if(posts.get(position).getType().equals("donation")) {
+            holder.tvGoal.setText(String.valueOf("$" + posts.get(position).getGoal()));
+            holder.imgView.setImageResource(R.mipmap.donation);
+        }
+        else{
+            holder.tvGoal.setText(String.valueOf((int)posts.get(position).getGoal() + " persons"));
+            holder.imgView.setImageResource(R.mipmap.vlt);
+        }
+        holder.tvDueDate.setText(posts.get(position).getEnd());
         holder.parent.setOnClickListener(v -> {
             Intent intent = new Intent(context, PostActivity.class);
             intent.putExtra("id", posts.get(position).getID());
@@ -65,9 +75,10 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvTitle, tvGoal;
+        private TextView tvTitle, tvGoal, tvDueDate;
         private CardView parent;
         private LinearProgressIndicator progressBar;
+        private ImageView imgView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             //TODO : initialize more textview
@@ -75,6 +86,8 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
             tvGoal = itemView.findViewById(R.id.tvGoal);
             parent = itemView.findViewById(R.id.cvPost);
             progressBar = itemView.findViewById(R.id.progressBar2);
+            tvDueDate = itemView.findViewById(R.id.tvDueDate);
+            imgView = itemView.findViewById(R.id.postImage);
         }
     }
 }

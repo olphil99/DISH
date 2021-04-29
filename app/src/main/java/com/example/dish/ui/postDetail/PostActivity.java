@@ -33,6 +33,7 @@ public class PostActivity extends AppCompatActivity {
     private TextInputLayout txtInputLayout;
     private TextInputEditText txtInputAmount;
 
+
     private int prog;
     @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -49,9 +50,11 @@ public class PostActivity extends AppCompatActivity {
                 setData(post);
                 if (post.getType().equals("donation")) {
                     btAccept.setVisibility(View.GONE);
+                    ivPostPicture.setImageResource(R.mipmap.donation);
                 } else {
                     btDonate.setVisibility(View.GONE);
                     txtInputLayout.setVisibility(View.GONE);
+                    ivPostPicture.setImageResource(R.mipmap.vlt);
                     handleAcceptedPost(post);
                 }
 
@@ -116,6 +119,8 @@ public class PostActivity extends AppCompatActivity {
         txtTitle.setText(post.getTitle());
         txtDescription.setText(post.getBody());
         txtHost.setText(post.getCreator());
+        txtStart.setText(post.getStart());
+        txtEnd.setText(post.getEnd());
         if(post.getType().equals("donation")) {
             txtGoal.setText("$" + post.getGoal());
             txtCurrentProgress.setText("$" + post.getCurrentProgress());

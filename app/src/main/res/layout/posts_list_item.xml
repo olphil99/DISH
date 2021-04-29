@@ -31,7 +31,8 @@
             android:layout_centerInParent="true"
             android:fontFamily="@font/amatic_sc"
             android:text="Title of the post"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
          <TextView
             android:id="@+id/tvExpire"
