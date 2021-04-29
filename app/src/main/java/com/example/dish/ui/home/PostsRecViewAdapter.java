@@ -42,13 +42,8 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO : putExtra for more parameters
                 Intent intent = new Intent(context, PostActivity.class);
-                intent.putExtra("title", posts.get(position).getTitle());
-                intent.putExtra("goal", posts.get(position).getGoal());
-                intent.putExtra("type", posts.get(position).getType());
-                intent.putExtra("creator", posts.get(position).getCreator());
-
+                intent.putExtra("id", posts.get(position).getID());
                 context.startActivity(intent);
             }
         });
