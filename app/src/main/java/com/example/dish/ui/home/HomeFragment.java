@@ -1,5 +1,6 @@
 package com.example.dish.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dish.R;
+import com.example.dish.ui.createPost.CreatePostActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -43,6 +46,16 @@ public class HomeFragment extends Fragment {
         adapter.setPosts(posts);
         postsRecView.setAdapter(adapter);
         postsRecView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+
+        // create/add post button
+        FloatingActionButton addPostButton = root.findViewById(R.id.add_post_button);
+        addPostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), CreatePostActivity.class));
+            }
+        });
+
         return root;
     }
 }

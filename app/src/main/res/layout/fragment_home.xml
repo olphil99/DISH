@@ -9,13 +9,28 @@
     android:layout_marginBottom="60dp"
     >
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/postsRecView"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/teal_200"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="164dp" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/postsRecView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/teal_200"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="164dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_post_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:contentDescription="add post"
+            android:backgroundTint="@color/dark_sky_blue"
+            app:srcCompat="@drawable/ic_add_white"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
