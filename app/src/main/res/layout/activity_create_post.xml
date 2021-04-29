@@ -166,10 +166,11 @@
                         app:startIconDrawable="@drawable/ic_today_black"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <EditText
+                            android:id="@+id/create_post_donation_exp_date_input"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Expiration date (MM/DD/YYYY)"
+                            android:hint="Select expiration date"
                             android:inputType="date" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -234,7 +235,6 @@
                         android:orientation="horizontal" >
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/create_post_event_start_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -243,6 +243,7 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
                             <EditText
+                                android:id="@+id/create_post_event_start_time"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="time" />
@@ -250,7 +251,6 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/create_post_event_end_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -259,6 +259,7 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
                             <EditText
+                                android:id="@+id/create_post_event_end_time"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="time" />
@@ -268,31 +269,16 @@
                     </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/create_post_event_start_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:startIconDrawable="@drawable/ic_today_black"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <EditText
+                            android:id="@+id/create_post_event_date_range"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Start date (MM/DD/YYYY)"
-                            android:inputType="date" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/create_post_event_end_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:startIconDrawable="@drawable/ic_today_black"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="End date (MM/DD/YYYY)"
+                            android:hint="Select Date Range"
                             android:inputType="date" />
 
                     </com.google.android.material.textfield.TextInputLayout>

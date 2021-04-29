@@ -2,6 +2,7 @@ package com.example.dish.ui.createPost;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -10,13 +11,23 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.dish.R;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointForward;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.timepicker.MaterialTimePicker;
+
+import java.util.Calendar;
 
 public class CreatePostActivity extends AppCompatActivity {
     private Context context;
@@ -28,6 +39,10 @@ public class CreatePostActivity extends AppCompatActivity {
     private ImageView imgView;
     private AutoCompleteTextView dropdown;
     private Button buttonLoadImage, btCreatePost;
+    private EditText donationExpDateButton, eventDateRangeButton,
+            eventStartTimeButton, eventEndTimeButton;
+
+    int eventStartHour, eventStartMin, eventEndHour, eventEndMin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,28 +93,83 @@ public class CreatePostActivity extends AppCompatActivity {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dropdown.setAdapter(adapter);
 
+            /* calendar date constraints */
+            CalendarConstraints.Builder calendarConstraintBuilder = new CalendarConstraints.Builder();
+            calendarConstraintBuilder.setValidator(DateValidatorPointForward.now());
 
-            /* event time picker doesn't work yet */
-//            EditText eventTimeInput = root.findViewById(R.id.create_post_event_time);
-//            eventTimeInput.setInputType(InputType.TYPE_NULL);
-//            eventTimeInput.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    final Calendar cldr = Calendar.getInstance();
-//                    int hour = cldr.get(Calendar.HOUR_OF_DAY);
-//                    int minutes = cldr.get(Calendar.MINUTE);
-//                    // time picker dialog
-//                    TimePickerDialog picker = new TimePickerDialog(getActivity().getApplicationContext(),
-//                            new TimePickerDialog.OnTimeSetListener() {
-//                                @Override
-//                                public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-//                                    eventTimeInput.setText(sHour + ":" + sMinute);
-//                                }
-//                            }, hour, minutes, true);
-//                    picker.show();
-//                }
-//            });
+            /* donation expiration date picker */
+            MaterialDatePicker.Builder donationExpDateBuilder = MaterialDatePicker.Builder.datePicker();
+            donationExpDateBuilder.setTitleText("Select an exp. date");
+            donationExpDateBuilder.setCalendarConstraints(calendarConstraintBuilder.build());
+            final MaterialDatePicker donationExpDatePicker = donationExpDateBuilder.build();
+            donationExpDateButton.setShowSoftInputOnFocus(false);
+            donationExpDateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    donationExpDatePicker.show(getSupportFragmentManager(), "MATERIAL_DATE_PICKER");
+                }
+            });
+            donationExpDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                @Override
+                public void onPositiveButtonClick(Object selection) {
+                    donationExpDateButton.setText(donationExpDatePicker.getHeaderText(), TextView.BufferType.EDITABLE);
+                }
+            });
 
+            /* event date range picker */
+            MaterialDatePicker.Builder eventDateRangeBuilder = MaterialDatePicker.Builder.dateRangePicker();
+            eventDateRangeBuilder.setTitleText("Select a date range");
+            eventDateRangeBuilder.setCalendarConstraints(calendarConstraintBuilder.build());
+            final MaterialDatePicker eventDateRangePicker = eventDateRangeBuilder.build();
+            eventDateRangeButton.setShowSoftInputOnFocus(false);
+            eventDateRangeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    eventDateRangePicker.show(getSupportFragmentManager(), "MATERIAL_DATE_PICKER");
+                }
+            });
+            eventDateRangePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                @Override
+                public void onPositiveButtonClick(Object selection) {
+                    eventDateRangeButton.setText(eventDateRangePicker.getHeaderText(), TextView.BufferType.EDITABLE);
+                }
+            });
+
+            /* event time pickers */
+            eventStartTimeButton.setShowSoftInputOnFocus(false);
+            eventStartTimeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Calendar cal = Calendar.getInstance();
+                    int hour = cal.get(Calendar.HOUR_OF_DAY);
+                    int minutes = cal.get(Calendar.MINUTE);
+                    TimePickerDialog picker = new TimePickerDialog(CreatePostActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int hr, int min) {
+                                eventStartTimeButton.setText(hr + ":" + min, TextView.BufferType.EDITABLE);
+                            }
+                        }, hour, minutes, true);
+                    picker.show();
+                }
+            });
+            eventEndTimeButton.setShowSoftInputOnFocus(false);
+            eventEndTimeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Calendar cal = Calendar.getInstance();
+                    int hour = cal.get(Calendar.HOUR_OF_DAY);
+                    int minutes = cal.get(Calendar.MINUTE);
+                    TimePickerDialog picker = new TimePickerDialog(CreatePostActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int hr, int min) {
+                                eventEndTimeButton.setText(hr + ":" + min, TextView.BufferType.EDITABLE);
+                            }
+                        }, hour, minutes, true);
+                    picker.show();
+                }
+            });
 
             /* POST button */
             btCreatePost.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +204,10 @@ public class CreatePostActivity extends AppCompatActivity {
         dropdown = findViewById(R.id.create_post_recurrence_dropdown);
         btCreatePost = findViewById(R.id.btCreatePost);
         buttonLoadImage = findViewById(R.id.create_post_img_button);
+        donationExpDateButton = findViewById(R.id.create_post_donation_exp_date_input);
+        eventDateRangeButton = findViewById(R.id.create_post_event_date_range);
+        eventStartTimeButton = findViewById(R.id.create_post_event_start_time);
+        eventEndTimeButton = findViewById(R.id.create_post_event_end_time);
     }
 
     public CreatePostActivity(){};
