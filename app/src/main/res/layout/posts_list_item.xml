@@ -13,7 +13,7 @@
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:backgroundTint="@color/teal_200">
 
         <ImageView
@@ -74,15 +74,16 @@
             android:textColor="@color/purple_200"
             android:textSize="16sp" />
 
-        <ProgressBar
+        <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progressBar2"
-            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/postImage"
-            android:progressTint="@color/teal_200"
+            app:indicatorColor="@color/teal_200"
+            app:trackThickness="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>
+
 
     </RelativeLayout>
 
