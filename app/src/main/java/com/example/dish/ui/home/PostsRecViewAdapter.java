@@ -42,9 +42,7 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //TODO: setText for more textView
         holder.tvTitle.setText(posts.get(position).getTitle());
-
         if(posts.get(position).getType().equals("donation")) {
             holder.tvGoal.setText(String.valueOf("$" + posts.get(position).getGoal()));
             holder.imgView.setImageResource(R.mipmap.donation);

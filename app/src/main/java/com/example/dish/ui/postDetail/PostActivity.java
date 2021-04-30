@@ -29,7 +29,6 @@ public class PostActivity extends AppCompatActivity {
     private TextView txtTitle, txtStart, txtEnd, txtDescription, txtLocation, txtHost, txtGoal, txtCurrentProgress;
     private Button btAccept, btShare, btDonate;
     private LinearProgressIndicator progressBar;
-    private ProgressBar progressBar2;
     private TextInputLayout txtInputLayout;
     private TextInputEditText txtInputAmount;
 
@@ -121,6 +120,7 @@ public class PostActivity extends AppCompatActivity {
         txtHost.setText(post.getCreator());
         txtStart.setText(post.getStart());
         txtEnd.setText(post.getEnd());
+        txtLocation.setText(post.getLocation());
         if(post.getType().equals("donation")) {
             txtGoal.setText("$" + post.getGoal());
             txtCurrentProgress.setText("$" + post.getCurrentProgress());
