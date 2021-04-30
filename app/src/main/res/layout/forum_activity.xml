@@ -12,6 +12,7 @@
         android:layout_gravity="center"
         android:text="subscribe"/>
     <TextView
+        android:id = "@+id/forumName"
         android:background="@drawable/back"
         android:layout_width="100dp"
         android:layout_height= "wrap_content"

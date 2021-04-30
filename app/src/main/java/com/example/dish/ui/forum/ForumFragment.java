@@ -32,14 +32,6 @@ public class ForumFragment extends Fragment {
         // FETCH DB ELEMENTS
         data = new String[] {"forum1", "forum2", "forum3"};
 
-        Button addPostButton = root.findViewById(R.id.sendMessage);
-        addPostButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), forumActivity.class));
-            }
-        });
-
         // ADD DB ELEMENTS DYNAMICALLY
         LinearLayout forumMain = root.findViewById(R.id.forumMain);
         for (int i = 0; i < data.length; i++) {
@@ -59,6 +51,15 @@ public class ForumFragment extends Fragment {
             tv.setTextColor(Color.BLACK);
             tv.setClickable(true);
             tv.setFocusable(true);
+
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent sendM = new Intent(v.getContext(), forumActivity.class);
+                    sendM.putExtra("name", forumTitle);
+                    startActivity(sendM);
+                }
+            });
 
             // add to screen
             forumMain.addView(tv);
