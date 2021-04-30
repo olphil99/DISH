@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -46,7 +47,7 @@ public class HomeFragment extends Fragment {
 
         // tag filter
         ArrayList<Boolean> tagFilterBooleanList = new ArrayList<>();
-        ChipGroup categories =  root.findViewById(R.id.filter_chip_group);
+        ChipGroup categories =  root.findViewById(R.id.filter_category_group);
         for (int i = 0; i < categories.getChildCount(); i++) {
             tagFilterBooleanList.add(false);
             Chip c = (Chip) categories.getChildAt(i);
@@ -59,39 +60,68 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
+        Chip donationFilter = root.findViewById(R.id.filter_chip_donation);
+        Chip eventFilter = root.findViewById(R.id.filter_chip_event);
         Button applyFilters = root.findViewById(R.id.apply_filter_button);
         applyFilters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ArrayList<Post> allPosts = Utils.getInstance().getAllPosts();
                 ArrayList<Post> filteredPosts = new ArrayList<Post>();
+                // check if any categories selected
+                Boolean hasCategories = false;
+                for (int i = 0; i < tagFilterBooleanList.size(); i++) {
+                    if (tagFilterBooleanList.get(i))
+                        hasCategories = true;
+                    if (hasCategories)
+                        break;
+                }
                 for (int i = 0; i < allPosts.size(); i++) {
+
+                    for (int j = 0; j < tagFilterBooleanList.size(); j++) {
+                        if (tagFilterBooleanList.get(j) && allPosts.get(i).getTags().get(j)) {
+                            if (allPosts.get(i).getType().equals("donation") && donationFilter.isChecked())
+                                filteredPosts.add(allPosts.get(i));
+                            else if (allPosts.get(i).getType().equals("event") && eventFilter.isChecked())
+                                filteredPosts.add(allPosts.get(i));
+                            else if (!donationFilter.isChecked() && !eventFilter.isChecked()) {
+                                filteredPosts.add(allPosts.get(i));
+                            }
+                        }
+                    }
                     // filter donations
-                    if (allPosts.get(i).getType().equals("donation") && tagFilterBooleanList.get(0)) {
-                        filteredPosts.add(allPosts.get(i));
-                        for (int j = 0; j < tagFilterBooleanList.size()-2; j++) {
-                            if (tagFilterBooleanList.get(j+2) && allPosts.get(i).getTags().get(j)) {
-                                filteredPosts.add(allPosts.get(i));
-                            }
-                        }
+//                    if (allPosts.get(i).getType().equals("donation") && donationFilter.isChecked()) {
+//                        for (int j = 0; j < tagFilterBooleanList.size(); j++) {
+//                            if (tagFilterBooleanList.get(j) && allPosts.get(i).getTags().get(j)) {
+//                                filteredPosts.add(allPosts.get(i));
+//                            }
+//                        }
+//                    }
+//                    // filter events
+//                    if (allPosts.get(i).getType().equals("event") && eventFilter.isChecked()) {
+//                        for (int j = 0; j < tagFilterBooleanList.size(); j++) {
+//                            if (tagFilterBooleanList.get(j) && allPosts.get(i).getTags().get(j)) {
+//                                filteredPosts.add(allPosts.get(i));
+//                            }
+//                        }
+//                    }
+                    // no categories selected
+                    if (!hasCategories) {
+                        if (allPosts.get(i).getType().equals("donation") && donationFilter.isChecked())
+                            filteredPosts.add(allPosts.get(i));
+                        else if (allPosts.get(i).getType().equals("event") && eventFilter.isChecked())
+                            filteredPosts.add(allPosts.get(i));
                     }
-                    // filter events
-                    if (allPosts.get(i).getType().equals("event") && tagFilterBooleanList.get(1)) {
-                        filteredPosts.add(allPosts.get(i));
-                        for (int j = 0; j < tagFilterBooleanList.size()-2; j++) {
-                            if (tagFilterBooleanList.get(j+2) && allPosts.get(i).getTags().get(j)) {
-                                filteredPosts.add(allPosts.get(i));
-                            }
-                        }
-                    }
-                    // post type not selected
-                    if ((tagFilterBooleanList.get(0) == false) && (tagFilterBooleanList.get(1) == false)) {
-                        for (int j = 0; j < tagFilterBooleanList.size()-2; j++) {
-                            if (tagFilterBooleanList.get(j+2) && allPosts.get(i).getTags().get(j)) {
-                                filteredPosts.add(allPosts.get(i));
-                            }
-                        }
-                    }
+                    // no post type selected
+//                    if (!donationFilter.isChecked() && !eventFilter.isChecked()) {
+//                        for (int j = 0; j < tagFilterBooleanList.size(); j++) {
+//                            if (tagFilterBooleanList.get(j) && allPosts.get(i).getTags().get(j)) {
+//                                if (!postAdded) {
+//                                    filteredPosts.add(allPosts.get(i));
+//                                }
+//                            }
+//                        }
+//                    }
                 }
                 adapter.setPosts(filteredPosts);
                 postsRecView.setAdapter(adapter);
@@ -109,7 +139,9 @@ public class HomeFragment extends Fragment {
         });
 
         // set filters invisible by default
-        ChipGroup filterCategories = root.findViewById(R.id.filter_chip_group);
+        LinearLayout filterType = root.findViewById(R.id.filter_type_section);
+        LinearLayout filterCategories = root.findViewById(R.id.filter_category_section);
+        filterType.setVisibility(View.GONE);
         filterCategories.setVisibility(View.GONE);
         // filter dropdown
         Button categoryDropdown = root.findViewById(R.id.filter_categories_dropdown);
@@ -117,10 +149,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (filterCategories.getVisibility() == View.GONE) {
+                    filterType.setVisibility(View.VISIBLE);
                     filterCategories.setVisibility(View.VISIBLE);
                     categoryDropdown.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_up_black, 0);
                 }
                 else if (filterCategories.getVisibility() == View.VISIBLE) {
+                    filterType.setVisibility(View.GONE);
                     filterCategories.setVisibility(View.GONE);
                     categoryDropdown.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down_black, 0);
                 }

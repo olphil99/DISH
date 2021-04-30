@@ -75,113 +75,167 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/filter_chip_group"
+    <LinearLayout
+        android:id="@+id/filter_type_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/shape_rectangle_rounded"
+        app:layout_constraintTop_toBottomOf="@id/browse_filters">
+
+        <TextView
+            android:id="@+id/filter_type_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="3dp"
+            android:paddingLeft="10dp"
+            android:backgroundTint="@color/beau_blue"
+            android:text="Post type:"
+            style="@style/Widget.MaterialComponents.Chip.Choice" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/filter_type_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="4dp" >
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_donation"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Donation" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_event"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="3dp"
+                android:text="Volunteer event" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/filter_category_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:orientation="vertical"
         android:layout_marginHorizontal="15dp"
         android:background="@drawable/shape_rectangle_rounded"
-        android:paddingHorizontal="10dp"
-        app:layout_constraintTop_toBottomOf="@id/browse_filters">
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/filter_type_section">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_donation"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+        <TextView
+            android:id="@+id/filter_category_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginHorizontal="3dp"
-            android:text="Donation" />
+            android:backgroundTint="@color/beau_blue"
+            android:text="Category:"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            style="@style/Widget.MaterialComponents.Chip.Choice" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_event"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/filter_category_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginHorizontal="3dp"
-            android:text="Volunteer event" />
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/shape_rectangle_rounded"
+            android:layout_marginTop="4dp"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintTop_toBottomOf="@id/filter_type_section">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_emergency"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Emergency" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_emergency"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Emergency" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_animals"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Animals" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_animals"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Animals" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_medical"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medical" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_medical"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medical" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_business"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="3dp"
-            android:text="Business" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_business"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="3dp"
+                android:text="Business" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_community"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Community" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_community"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Community" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_environment"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Environment" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_environment"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Environment" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_nonprofit"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nonprofit" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_nonprofit"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nonprofit" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_financial"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Financial" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_financial"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Financial" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_memorial"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Memorial" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_memorial"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Memorial" />
 
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_education"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Education" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_education"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Education" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_chip_other"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Other" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_other"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other" />
 
-    </com.google.android.material.chip.ChipGroup>
+        </com.google.android.material.chip.ChipGroup>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
