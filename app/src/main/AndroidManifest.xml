@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DISH">
         <activity
+            android:name=".ui.forum.forumActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
             android:name=".ui.createPost.CreatePostActivity"
             android:parentActivityName=".MainActivity">
         </activity>

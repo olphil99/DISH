@@ -17,7 +17,7 @@ public class forumActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.forum_activity);
         Button subscribe = (Button) findViewById(R.id.subscribe);
         subscribe.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
