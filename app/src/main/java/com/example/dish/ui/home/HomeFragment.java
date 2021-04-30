@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,8 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dish.R;
 import com.example.dish.ui.createPost.CreatePostActivity;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
@@ -39,6 +44,61 @@ public class HomeFragment extends Fragment {
         adapter.setPosts(Utils.getInstance().getAllPosts());
         postsRecView.setAdapter(adapter);
         postsRecView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+
+        // tag filter
+        ArrayList<Boolean> tagFilterBooleanList = new ArrayList<>();
+        ChipGroup categories =  root.findViewById(R.id.filter_chip_group);
+        for (int i = 0; i < categories.getChildCount(); i++) {
+            tagFilterBooleanList.add(false);
+            Chip c = (Chip) categories.getChildAt(i);
+            c.setTag(i);
+            c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton button, boolean b) {
+                    int tag = (int) button.getTag();
+                    tagFilterBooleanList.set(tag, b);
+                }
+            });
+        }
+        Button applyFilters = root.findViewById(R.id.apply_filter_button);
+        applyFilters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Post> allPosts = Utils.getInstance().getAllPosts();
+                ArrayList<Post> filteredPosts = new ArrayList<Post>();
+                for (int i = 0; i < allPosts.size(); i++) {
+                    // filter donations
+                    if (allPosts.get(i).getType().equals("donation") && tagFilterBooleanList.get(0)) {
+                        filteredPosts.add(allPosts.get(i));
+                        for (int j = 0; j < tagFilterBooleanList.size()-2; j++) {
+                            if (tagFilterBooleanList.get(j+2) && allPosts.get(i).getTags().get(j)) {
+                                filteredPosts.add(allPosts.get(i));
+                            }
+                        }
+                    }
+                    // filter events
+                    if (allPosts.get(i).getType().equals("event") && tagFilterBooleanList.get(1)) {
+                        filteredPosts.add(allPosts.get(i));
+                        for (int j = 0; j < tagFilterBooleanList.size()-2; j++) {
+                            if (tagFilterBooleanList.get(j+2) && allPosts.get(i).getTags().get(j)) {
+                                filteredPosts.add(allPosts.get(i));
+                            }
+                        }
+                    }
+                    // post type not selected
+                    if ((tagFilterBooleanList.get(0) == false) && (tagFilterBooleanList.get(1) == false)) {
+                        for (int j = 0; j < tagFilterBooleanList.size()-2; j++) {
+                            if (tagFilterBooleanList.get(j+2) && allPosts.get(i).getTags().get(j)) {
+                                filteredPosts.add(allPosts.get(i));
+                            }
+                        }
+                    }
+                }
+                adapter.setPosts(filteredPosts);
+                postsRecView.setAdapter(adapter);
+                postsRecView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+            }
+        });
 
         // create/add post button
         FloatingActionButton addPostButton = root.findViewById(R.id.add_post_button);

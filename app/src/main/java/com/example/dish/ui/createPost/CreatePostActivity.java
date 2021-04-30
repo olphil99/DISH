@@ -27,6 +27,8 @@ import com.example.dish.R;
 import com.example.dish.ui.home.Post;
 import com.example.dish.ui.home.Utils;
 import com.example.dish.ui.postDetail.PostActivity;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -35,6 +37,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.timepicker.MaterialTimePicker;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -52,6 +55,7 @@ public class CreatePostActivity extends AppCompatActivity {
             eventStartTimeButton, eventEndTimeButton , postStartAndEndDate ,postEndDate;
     private TextInputEditText postTitle, postDescription, postUrl, postDonationAmount, postVolunteers, postLocation;
     private Uri img;
+    private ChipGroup tagsGroup;
     int eventStartHour, eventStartMin, eventEndHour, eventEndMin;
 
     @Override
@@ -195,12 +199,22 @@ public class CreatePostActivity extends AppCompatActivity {
                     String description = postDescription.getText().toString();
                     String url = postUrl.getText().toString();
                     String location = postLocation.getText().toString();
+                    ArrayList<Boolean> tags = new ArrayList<>();
+                    for (int i = 0; i < tagsGroup.getChildCount(); i++) {
+                        Chip c = (Chip) tagsGroup.getChildAt(i);
+                        if (c.isChecked()) {
+                            tags.add(true);
+                        }
+                        else {
+                            tags.add(false);
+                        }
+                    }
                     double goal = 0;
                     if(donationEntries.getVisibility() == View.VISIBLE) {
                         goal = Double.parseDouble(postDonationAmount.getText().toString());
                         String donationEndDate = postEndDate.getText().toString();
                         String start = new Date().toString().substring(4, 10) + donationEndDate.substring(donationEndDate.indexOf(','));
-                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, "TAG", "donation", img, goal, start, donationEndDate, url, location);
+                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, tags, "donation", img, goal, start, donationEndDate, url, location);
                         if(Utils.getInstance().addNewPost(post)){
                             Intent postDetailIntent = new Intent(v.getContext(), PostActivity.class);
                             postDetailIntent.putExtra("id", post.getID());
@@ -216,7 +230,7 @@ public class CreatePostActivity extends AppCompatActivity {
                         String eventDueDate = postStartAndEndDate.getText().toString();
                         String start = eventStartHour + ":" + eventStartMin + " " +  eventDueDate.substring(0, eventDueDate.indexOf("–")) + year;
                         String end = eventEndHour + ":" + eventEndMin + " " + eventDueDate.substring(eventDueDate.indexOf("–")+1) + year;
-                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, "TAG", "event", img, (int) goal, start, end, url, location);
+                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, tags, "event", img, (int) goal, start, end, url, location);
                         if(Utils.getInstance().addNewPost(post)){
                             Intent postDetailIntent = new Intent(v.getContext(), PostActivity.class);
                             postDetailIntent.putExtra("id", post.getID());
@@ -270,6 +284,7 @@ public class CreatePostActivity extends AppCompatActivity {
         postLocation = findViewById(R.id.create_post_event_location);
         postEndDate = findViewById(R.id.create_post_donation_exp_date_input);
         postStartAndEndDate = findViewById(R.id.create_post_event_date_range); // only event posts have this
+        tagsGroup = findViewById(R.id.tag_chipGroup);
     }
     @Override
     public void onBackPressed() {
