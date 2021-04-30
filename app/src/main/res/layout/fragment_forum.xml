@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.forum.ForumFragment"
     android:paddingBottom="50dp"
-    android:overScrollMode="never" >
+    android:overScrollMode="never"
+    android:background="#3C0DEAD4">
 
     <LinearLayout
         android:id="@+id/forumMain"
@@ -20,10 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Subscribed Forums"
-            android:textSize="22sp"
+            android:textSize="32sp"
+            android:fontFamily = "@font/amatic_sc"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             android:gravity="center"
             android:textStyle="bold"
-            android:background="@drawable/textbox_border"
+            android:background="#ebdbfd"
             android:textColor="@color/black"/>
 
         <TextView
@@ -55,10 +58,12 @@
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
             android:text="All Forums"
-            android:textSize="22sp"
+            android:textSize="32sp"
+            android:fontFamily = "@font/amatic_sc"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             android:gravity="center"
             android:textStyle="bold"
-            android:background="@drawable/textbox_border"
+            android:background="#ebdbfd"
             android:textColor="@color/black"/>
     </LinearLayout>
 
