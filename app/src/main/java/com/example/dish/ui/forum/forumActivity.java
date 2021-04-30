@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Button;
 import android.content.DialogInterface;
@@ -36,20 +37,19 @@ public class forumActivity extends AppCompatActivity {
                     subscribe.setText("unsubscribe");
                 }else{
                     //unsubscribe action
-
                     subscribe.setText("subscribe");
                 }
             }
         });
 
-        TextView send = (TextView) findViewById(R.id.sendb);
+        EditText editText = (EditText) findViewById(R.id.message);
+        EditText nameText = (EditText) findViewById(R.id.name_input);
+        LinearLayout display = (LinearLayout) findViewById(R.id.display);
+        Button send = (Button) findViewById(R.id.sendb);
         send.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText editText = (EditText) findViewById(R.id.message);
-                EditText name = (EditText) findViewById(R.id.id);
-                String idname = name.getText().toString();
+                String idname = nameText.getText().toString();
                 String message = editText.getText().toString();
-                LinearLayout display = (LinearLayout) findViewById(R.id.display);
 
                 LinearLayout temp = new LinearLayout(display.getContext());
                 temp.setOrientation(LinearLayout.VERTICAL);
@@ -60,18 +60,13 @@ public class forumActivity extends AppCompatActivity {
 
                 // other params
                 nameView.setText(idname + ":");
-                display.setMinimumWidth(nameView.getWidth());
-
-                float factor = display.getContext().getResources().getDisplayMetrics().density;
-                tv.setText(message);
-
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT );
-                layoutParams.leftMargin = (int)(15* factor);
-                layoutParams.rightMargin =(int)(15* factor);
+                layoutParams.setMargins(6,6,6,6);
+                tv.setText(message);
                 tv.setLayoutParams(layoutParams);
-                tv.setPadding(5,2,5,2);
+                tv.setPadding(15,8,15,8);
                 tv.setGravity(Gravity.CENTER);
-                tv.setBackgroundResource(R.drawable.back);
+                tv.setBackgroundResource(R.drawable.message_background);
                 tv.setTextColor(Color.BLACK);
                 tv.setFocusable(true);
 
@@ -80,6 +75,19 @@ public class forumActivity extends AppCompatActivity {
                 temp.addView(nameView);
                 temp.addView(tv);
                 display.addView(temp);
+
+                // clear input
+                editText.setText("");
+                nameText.setText("");
+
+                // default scroll to bottom of message history
+                final ScrollView scrollview = ((ScrollView) findViewById(R.id.message_history));
+                scrollview.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+                    }
+                });
             }
         });
 

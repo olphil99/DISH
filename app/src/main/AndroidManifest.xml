@@ -17,9 +17,7 @@
             android:name=".ui.dashboard.GoalActivity"
             android:label="@string/title_activity_goal"
             android:theme="@style/Theme.DISH.NoActionBar" />
-        <activity android:name=".ui.postDetail.PostActivity" />
-            android:name=".ui.forum.forumActivity"
-            android:parentActivityName=".MainActivity">
+        <activity android:name=".ui.forum.forumActivity">
         </activity>
         <activity
             android:name=".ui.createPost.CreatePostActivity"
