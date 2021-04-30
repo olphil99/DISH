@@ -35,9 +35,9 @@ public class ImageAdapter extends BaseAdapter {
 
         if (convertView == null) {
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
+            imageView.setLayoutParams(new GridView.LayoutParams(400, 400));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//            imageView.setPadding(8, 8, 8, 8);
+            imageView.setPadding(2, 2, 2, 2);
         }
         else
         {
@@ -49,6 +49,6 @@ public class ImageAdapter extends BaseAdapter {
 
     // Keep all Images in array
     public Integer[] mThumbIds = new Integer[]{
-            R.drawable.ic_home_black_24dp, R.drawable.ic_today_black, R.drawable.ic_add_a_photo_black
+            R.mipmap.donation, R.mipmap.vlt
     };
 }
