@@ -1,11 +1,13 @@
 package com.example.dish.ui.createPost;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,14 +22,21 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.dish.MainActivity;
 import com.example.dish.R;
+import com.example.dish.ui.home.Post;
+import com.example.dish.ui.home.Utils;
+import com.example.dish.ui.postDetail.PostActivity;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.timepicker.MaterialTimePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CreatePostActivity extends AppCompatActivity {
     private Context context;
@@ -40,7 +49,8 @@ public class CreatePostActivity extends AppCompatActivity {
     private AutoCompleteTextView dropdown;
     private Button buttonLoadImage, btCreatePost;
     private EditText donationExpDateButton, eventDateRangeButton,
-            eventStartTimeButton, eventEndTimeButton;
+            eventStartTimeButton, eventEndTimeButton , postStartAndEndDate ,postEndDate;
+    private TextInputEditText postTitle, postDescription, postUrl, postDonationAmount, postVolunteers, postLocation;
 
     int eventStartHour, eventStartMin, eventEndHour, eventEndMin;
 
@@ -148,8 +158,11 @@ public class CreatePostActivity extends AppCompatActivity {
                             @Override
                             public void onTimeSet(TimePicker view, int hr, int min) {
                                 eventStartTimeButton.setText(hr + ":" + min, TextView.BufferType.EDITABLE);
+                                eventStartHour = hr;
+                                eventStartMin = min;
                             }
                         }, hour, minutes, true);
+
                     picker.show();
                 }
             });
@@ -165,6 +178,8 @@ public class CreatePostActivity extends AppCompatActivity {
                             @Override
                             public void onTimeSet(TimePicker view, int hr, int min) {
                                 eventEndTimeButton.setText(hr + ":" + min, TextView.BufferType.EDITABLE);
+                                eventEndHour = hr;
+                                eventEndMin = min;
                             }
                         }, hour, minutes, true);
                     picker.show();
@@ -176,7 +191,40 @@ public class CreatePostActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(CreatePostActivity.this, "Post created", Toast.LENGTH_LONG).show();
-                    CreatePostActivity.this.finish();
+                    String title = postTitle.getText().toString();
+                    String description = postDescription.getText().toString();
+                    String url = postUrl.getText().toString();
+                    String location = postLocation.getText().toString();
+                    double goal = 0;
+                    if(donationEntries.getVisibility() == View.VISIBLE) {
+                        goal = Double.parseDouble(postDonationAmount.getText().toString());
+                        String donationEndDate = postEndDate.getText().toString();
+                        String start = new Date().toString().substring(4, 10) + donationEndDate.substring(donationEndDate.indexOf(','));
+                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, "TAG", "donation", url, goal, start, donationEndDate, url, location);
+                        if(Utils.getInstance().addNewPost(post)){
+                            Intent postDetailIntent = new Intent(v.getContext(), PostActivity.class);
+                            postDetailIntent.putExtra("id", post.getID());
+                            v.getContext().startActivity(postDetailIntent);
+                        }
+                        else {
+                            Toast.makeText(CreatePostActivity.this, "Err...something wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else {
+                        goal = Integer.parseInt(postVolunteers.getText().toString());
+                        String eventDueDate = postStartAndEndDate.getText().toString();
+                        String start = eventStartHour + ":" + eventStartMin + " " +  eventDueDate.substring(0, eventDueDate.indexOf("–"));
+                        String end = eventEndHour + ":" + eventEndMin + " " + eventDueDate.substring(eventDueDate.indexOf("–")+1);
+                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, "TAG", "event", url, (int) goal, start, end, url, location);
+                        if(Utils.getInstance().addNewPost(post)){
+                            Intent postDetailIntent = new Intent(v.getContext(), PostActivity.class);
+                            postDetailIntent.putExtra("id", post.getID());
+                            v.getContext().startActivity(postDetailIntent);
+                        }
+                        else {
+                            Toast.makeText(CreatePostActivity.this, "Err...something wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
             });
         }
@@ -209,7 +257,20 @@ public class CreatePostActivity extends AppCompatActivity {
         eventDateRangeButton = findViewById(R.id.create_post_event_date_range);
         eventStartTimeButton = findViewById(R.id.create_post_event_start_time);
         eventEndTimeButton = findViewById(R.id.create_post_event_end_time);
+        postTitle = findViewById(R.id.create_post_title);
+        postDescription = findViewById(R.id.create_post_description);
+        postUrl = findViewById(R.id.create_post_url);
+        postVolunteers = findViewById(R.id.create_post_event_volunteers);
+        postDonationAmount = findViewById(R.id.create_post_donation_amount);
+        postLocation = findViewById(R.id.create_post_event_location);
+        postEndDate = findViewById(R.id.create_post_donation_exp_date_input);
+        postStartAndEndDate = findViewById(R.id.create_post_event_date_range); // only event posts have this
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CreatePostActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
     public CreatePostActivity(){};
 }
