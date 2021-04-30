@@ -21,9 +21,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Create Post"
-                android:paddingVertical="10dp"
+                android:layout_marginVertical="10dp"
                 android:paddingHorizontal="50dp"
-                android:textSize="20sp"
+                android:fontFamily="@font/amatic_sc"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="46sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -71,13 +73,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Title"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_marginBottom="10dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/create_post_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLines="1" />
+                        android:maxLines="1"
+                        android:background="#1C0DEAD4" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +96,9 @@
                         android:id="@+id/create_post_description"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:maxLines="3" />
+                        android:maxLines="3"
+                        android:background="#1C0DEAD4"
+                        android:layout_marginBottom="10dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
                     android:gravity="left"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginBottom="10dp">
 
                     <Button
                         android:id="@+id/create_post_img_button"
@@ -111,7 +117,7 @@
                         android:text="Add photo"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="#1C0DEAD4"
                         android:layout_marginRight="15dp"/>
 
                     <ImageView
@@ -134,7 +140,9 @@
                         android:id="@+id/create_post_url"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Donation/event url" />
+                        android:hint="Donation/event url"
+                        android:background="#1C0DEAD4"
+                        android:layout_marginBottom="10dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -156,7 +164,9 @@
                             android:id="@+id/create_post_donation_amount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="numberDecimal" />
+                            android:inputType="numberDecimal"
+                            android:background="#1C0DEAD4"
+                            android:layout_marginBottom="10dp"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -172,7 +182,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Select expiration date"
-                            android:inputType="date" />
+                            android:inputType="date"
+                            android:background="#1C0DEAD4"
+                            android:layout_marginBottom="10dp"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -195,7 +207,9 @@
                             android:id="@+id/create_post_event_volunteers"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:background="#1C0DEAD4"
+                            android:layout_marginBottom="10dp"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -209,7 +223,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/create_post_event_location"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:background="#1C0DEAD4"
+                            android:layout_marginBottom="10dp"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -225,20 +241,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="none"
-                            />
+                            android:layout_marginBottom="10dp"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:hint="Start time"
+                            android:layout_marginRight="3dp"
                             app:startIconDrawable="@drawable/ic_schedule_black"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
@@ -246,6 +264,7 @@
                                 android:id="@+id/create_post_event_start_time"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="#1C0DEAD4"
                                 android:inputType="time" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -262,6 +281,7 @@
                                 android:id="@+id/create_post_event_end_time"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="#1C0DEAD4"
                                 android:inputType="time" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -279,6 +299,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Select Date Range"
+                            android:background="#1C0DEAD4"
                             android:inputType="date" />
 
                     </com.google.android.material.textfield.TextInputLayout>
