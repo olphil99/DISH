@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,9 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dish.R;
 import com.example.dish.ui.createPost.CreatePostActivity;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
@@ -46,6 +46,25 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), CreatePostActivity.class));
+            }
+        });
+
+        // set filters invisible by default
+        ChipGroup filterCategories = root.findViewById(R.id.filter_chip_group);
+        filterCategories.setVisibility(View.GONE);
+        // filter dropdown
+        Button categoryDropdown = root.findViewById(R.id.filter_categories_dropdown);
+        categoryDropdown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (filterCategories.getVisibility() == View.GONE) {
+                    filterCategories.setVisibility(View.VISIBLE);
+                    categoryDropdown.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_up_black, 0);
+                }
+                else if (filterCategories.getVisibility() == View.VISIBLE) {
+                    filterCategories.setVisibility(View.GONE);
+                    categoryDropdown.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down_black, 0);
+                }
             }
         });
 
