@@ -13,10 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dish.R;
 import com.example.dish.ui.createPost.CreatePostActivity;
-import com.example.dish.ui.login.ui.login.LoginActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
@@ -46,7 +43,7 @@ public class HomeFragment extends Fragment {
         addPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), LoginActivity.class));
+                startActivity(new Intent(v.getContext(), CreatePostActivity.class));
             }
         });
 
