@@ -17,11 +17,13 @@ import android.widget.Toast;
 
 import com.example.dish.MainActivity;
 import com.example.dish.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class LoginActivity extends AppCompatActivity {
     EditText username;
     EditText password;
+    Button loginButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,19 +31,17 @@ public class LoginActivity extends AppCompatActivity {
 
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
-        Button loginButton = findViewById(R.id.login);
-        ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        loginButton = (Button) findViewById(R.id.login);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (v == loginButton) {
-                    User user = new User(username.getText().toString(), password.getText().toString());
-                    LoginData.getInstance().addUser(user);
+                User user = new User(username.getText().toString(), password.getText().toString());
+                if (LoginData.getInstance().addUser(user)) {
                     Toast.makeText(getBaseContext(), "login successful ^_^", Toast.LENGTH_SHORT).show();
                     Intent mainActivityIntent = new Intent(v.getContext(), MainActivity.class);
                     v.getContext().startActivity(mainActivityIntent);
                 } else {
-                    Toast.makeText(getBaseContext(), "u fucked up ^_^", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "oh no :(", Toast.LENGTH_SHORT).show();
                 }
             }
 
