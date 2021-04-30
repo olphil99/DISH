@@ -60,6 +60,6 @@
             android:textStyle="bold"
             android:background="@drawable/textbox_border"
             android:textColor="@color/black"/>
-
     </LinearLayout>
+
 </ScrollView>

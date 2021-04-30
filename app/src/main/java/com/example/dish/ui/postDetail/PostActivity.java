@@ -3,17 +3,22 @@ package com.example.dish.ui.postDetail;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dish.MainActivity;
 import com.example.dish.R;
 import com.example.dish.ui.home.Post;
+import com.example.dish.ui.home.Utils;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -25,91 +30,123 @@ public class PostActivity extends AppCompatActivity {
     private TextView txtTitle, txtStart, txtEnd, txtDescription, txtLocation, txtHost, txtGoal, txtCurrentProgress;
     private Button btAccept, btShare, btDonate;
     private LinearProgressIndicator progressBar;
+    private ProgressBar progressBar2;
     private TextInputLayout txtInputLayout;
     private TextInputEditText txtInputAmount;
+    private LinearLayout pdLocationLL;
+
+
 
     private int prog;
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
         initViews();
-
-        String d = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).";
         Intent intent = getIntent();
         if(intent != null) {
+            int postId = intent.getIntExtra("id", -1);
+            Post post = Utils.getInstance().getPostById(postId);
+            if (post != null) {
+                setData(post);
+                if (post.getType().equals("donation")) {
+                    btAccept.setVisibility(View.GONE);
+                    if(post.getPicture_url() != null)
+                        ivPostPicture.setImageURI(post.getPicture_url());
+                    else
+                        ivPostPicture.setImageResource(R.mipmap.donation);
+                } else {
+                    btDonate.setVisibility(View.GONE);
+                    txtInputLayout.setVisibility(View.GONE);
+                    if(post.getPicture_url() != null)
+                        ivPostPicture.setImageURI(post.getPicture_url());
+                    else
+                        ivPostPicture.setImageResource(R.mipmap.vlt);
+                    handleAcceptedPost(post);
+                }
 
-            String title = intent.getStringExtra("title");
-            double goal = intent.getDoubleExtra("goal", 0);
-            String type = intent.getStringExtra("type");
-            String creator = intent.getStringExtra("creator");
-            Post post = new Post(creator, 1, title, d,"#FISH", type, "https", goal );
-            setData(post);
-            if(post.getType().equals("donation")) {
-                btAccept.setVisibility(View.GONE);
-            }
-            else {
-                btDonate.setVisibility(View.GONE);
-                txtInputLayout.setVisibility(View.GONE);
-            }
-
-            btAccept.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(btAccept.getText().toString().equals("ACCEPT")) {
+                btAccept.setOnClickListener(v -> {
+                    if (btAccept.getText().toString().equals("ACCEPT")) {
                         btAccept.setText("QUIT");
                         btAccept.setBackgroundColor(getResources().getColor(R.color.red));
-                        post.setCurrentProgress(post.getCurrentProgress() + 1);
-                        txtCurrentProgress.setText(String.valueOf((int)post.getCurrentProgress()) + " people are going");
-                    }
-                    else{
+                        if(Utils.getInstance().addToRegisteredPosts(post))
+                            Toast.makeText(PostActivity.this, "Registered", Toast.LENGTH_SHORT);
+                        else
+                            Toast.makeText(PostActivity.this, "Err...something wrong", Toast.LENGTH_SHORT);
+
+                    } else {
                         btAccept.setText("ACCEPT");
                         btAccept.setBackgroundColor(getResources().getColor(R.color.teal_200));
-                        post.setCurrentProgress(post.getCurrentProgress() - 1);
-                        txtCurrentProgress.setText(String.valueOf((int)post.getCurrentProgress()) + " people are going");
+                        if(Utils.getInstance().removeRegisteredPosts(post))
+                            Toast.makeText(PostActivity.this, "Removed", Toast.LENGTH_SHORT);
+                        else
+                            Toast.makeText(PostActivity.this, "Err...something wrong", Toast.LENGTH_SHORT);
                     }
-                    prog = (int) (post.getCurrentProgress()/post.getGoal() * 100);
+                    if((int) post.getCurrentProgress() == 0 ||(int) post.getCurrentProgress() > 1)
+                        txtCurrentProgress.setText((int) post.getCurrentProgress() + " people are going");
+                    else
+                        txtCurrentProgress.setText((int) post.getCurrentProgress() + " person is going");
+                    prog = (int) (post.getCurrentProgress() / post.getGoal() * 100);
                     progressBar.setProgress(prog, true);
-                }
-            });
+                });
 
-            btDonate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Double amount = Double.valueOf(String.valueOf(txtInputAmount.getText()));
-                    txtInputAmount.setText("");
-                    post.setCurrentProgress(post.getCurrentProgress() + amount);
-                    prog = (int) (post.getCurrentProgress()/post.getGoal() * 100);
-                    txtCurrentProgress.setText("$"+String.valueOf(post.getCurrentProgress()));
-                    progressBar.setProgress(prog, true);
-                }
-            });
-            //TODO: Handle the btShare
+                btDonate.setOnClickListener(v -> {
+                    if (txtInputAmount.getText().toString().length() > 0) {
+                        double amount = Double.parseDouble(String.valueOf(txtInputAmount.getText()));
+                        txtInputAmount.setText("");
+                        post.setCurrentProgress(post.getCurrentProgress() + amount);
+                        prog = (int) (post.getCurrentProgress() / post.getGoal() * 100);
+                        txtCurrentProgress.setText("$" + post.getCurrentProgress());
+                        progressBar.setProgress(prog, true);
+                    }
+                    else {
+                        Toast.makeText(PostActivity.this, "Please be nice!", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-            btShare.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(PostActivity.this, "SHARE SELECTED", Toast.LENGTH_SHORT);
-                }
-            });
+                btShare.setOnClickListener(v -> Toast.makeText(PostActivity.this, "SHARED", Toast.LENGTH_SHORT).show());
+            }
         }
     }
 
+    private void handleAcceptedPost(Post post) {
+        ArrayList<Post> acceptedPosts = Utils.getInstance().getRegisteredPosts();
+        boolean alreadyAccepted = false;
+        for(Post p : acceptedPosts) {
+            if(p.getID() == post.getID()) {
+                alreadyAccepted = true;
+            }
+        }
+        if(alreadyAccepted) {
+            btAccept.setText("QUIT");
+            btAccept.setBackgroundColor(getResources().getColor(R.color.red));
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setData(Post post) {
         txtTitle.setText(post.getTitle());
         txtDescription.setText(post.getBody());
         txtHost.setText(post.getCreator());
+        txtStart.setText(post.getStart());
+        txtEnd.setText(post.getEnd());
+        txtLocation.setText(post.getLocation());
         if(post.getType().equals("donation")) {
-            txtGoal.setText("$" + String.valueOf(post.getGoal()));
-            txtCurrentProgress.setText("$" + String.valueOf(post.getCurrentProgress() ));
+            txtGoal.setText("$" + post.getGoal());
+            txtCurrentProgress.setText("$" + post.getCurrentProgress());
+            pdLocationLL.setVisibility(View.GONE);
         }
         else {
-            txtGoal.setText(String.valueOf((int) post.getGoal()) + " volunteers");
-            txtCurrentProgress.setText(String.valueOf((int)post.getCurrentProgress()) + " people are going");
+            txtGoal.setText((int) post.getGoal() + " volunteers");
+            if((int) post.getCurrentProgress() == 0 || (int) post.getCurrentProgress() > 1)
+                txtCurrentProgress.setText((int) post.getCurrentProgress() + " people are going");
+            else
+                txtCurrentProgress.setText((int) post.getCurrentProgress() + " person is going");
         }
-        prog = (int)(post.getCurrentProgress()/post.getGoal());
+        prog = (int) (post.getCurrentProgress() / post.getGoal() * 100);
         progressBar.setProgress(prog, true);
     }
     private void initViews() {
@@ -128,5 +165,13 @@ public class PostActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         txtInputLayout = findViewById(R.id.oTxtFieldAmount);
         txtInputAmount = findViewById(R.id.txtInputAmount);
+        pdLocationLL = findViewById(R.id.postDetailLocationLL);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(PostActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
