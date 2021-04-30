@@ -39,14 +39,15 @@
 
                     <TextView
                         android:id="@+id/txtTitle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:backgroundTint="#FFFFFF"
+                        android:gravity="center"
+                        android:background="#3C0DEAD4"
                         android:fontFamily="@font/amatic_sc"
                         android:text="Title"
                         android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textSize="46sp" />
+                        android:textSize="46sp"
+                        android:textStyle="bold" />
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -60,7 +61,7 @@
                             android:drawableStart="@drawable/ic_today_black"
                             android:text="  Start : "
                             android:textColor="@color/teal_200"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/txtStartingTime"
@@ -68,7 +69,7 @@
                             android:layout_height="wrap_content"
                             android:text="7:30 AM 4/22/2022"
                             android:textAlignment="viewStart"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -84,14 +85,14 @@
                             android:drawableStart="@drawable/ic_today_black"
                             android:text="  End : "
                             android:textColor="@color/teal_200"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/txtEndingTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="9:30 PM 4/22/2022"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -108,14 +109,14 @@
                             android:drawableStart="@drawable/ic_baseline_location_city_24"
                             android:text="  Location : "
                             android:textColor="@color/teal_200"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/txtLocation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="...Chicago, Illinois"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -131,14 +132,14 @@
                             android:drawableStart="@android:drawable/ic_menu_myplaces"
                             android:text="Hosted by "
                             android:textColor="@color/teal_200"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/txtHost"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="UIUC"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 
@@ -155,19 +156,19 @@
                             android:drawableStart="@android:drawable/btn_star_big_on"
                             android:text="Goal: "
                             android:textColor="@color/teal_200"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/txtGoal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Goal"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                     <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="170dp"
                         android:nestedScrollingEnabled="true">
                         <TextView
                             android:id="@+id/txtDescription"
@@ -176,7 +177,7 @@
                             android:layout_marginTop="10dp"
                             android:text="A very long description"
                             android:textAlignment="viewStart"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
 
                     </ScrollView>
 
@@ -187,7 +188,7 @@
                         android:layout_height="wrap_content"
                         android:text="500 people are going"
                         android:layout_marginTop="10dp"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
 
                     <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -234,7 +235,7 @@
                         android:layout_marginEnd="8dp"
                         android:backgroundTint="@color/teal_200"
                         android:text="ACCEPT"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btDonate"
@@ -243,14 +244,14 @@
                         android:layout_marginEnd="8dp"
                         android:backgroundTint="@color/teal_200"
                         android:text="DONATE"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btShare"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="SHARE"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         app:backgroundTint="@color/teal_200" />
                 </LinearLayout>
 
