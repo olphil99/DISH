@@ -68,13 +68,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/rgDonationEvent">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/create_post_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Title"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/create_post_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1" />
@@ -82,13 +82,14 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/create_post_description"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Description"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/create_post_description"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:maxLines="3" />
@@ -124,13 +125,13 @@
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/create_post_url"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_add_link_black"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/create_post_url"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Donation/event url" />
@@ -144,7 +145,6 @@
                     android:orientation="vertical" >
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/create_post_donation_amount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Goal amount"
@@ -153,6 +153,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/create_post_donation_amount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="numberDecimal" />
@@ -184,7 +185,6 @@
                     android:orientation="vertical" >
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/create_post_event_volunteers"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Number of volunteers"
@@ -192,6 +192,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/create_post_event_volunteers"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="number" />
@@ -199,7 +200,6 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/create_post_event_location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Location"
@@ -207,6 +207,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/create_post_event_location"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
