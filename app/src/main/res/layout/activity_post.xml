@@ -42,6 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:backgroundTint="#FFFFFF"
                         android:fontFamily="@font/amatic_sc"
                         android:text="Title"
                         android:textAppearance="?attr/textAppearanceHeadline6"
@@ -49,14 +50,15 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="left"
                         android:orientation="horizontal"
                         android:layout_marginTop="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Start : "
+                            android:drawableStart="@drawable/ic_today_black"
+                            android:text="  Start : "
                             android:textColor="@color/teal_200"
                             android:textSize="16sp" />
 
@@ -72,14 +74,15 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="left"
                         android:orientation="horizontal"
                         android:layout_marginTop="2dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="End : "
+                            android:drawableStart="@drawable/ic_today_black"
+                            android:text="  End : "
                             android:textColor="@color/teal_200"
                             android:textSize="16sp" />
 
@@ -94,14 +97,15 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="left"
                         android:orientation="horizontal"
                         android:layout_marginTop="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Location : "
+                            android:drawableStart="@drawable/ic_baseline_location_city_24"
+                            android:text="  Location : "
                             android:textColor="@color/teal_200"
                             android:textSize="16sp" />
 
@@ -116,13 +120,14 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="left"
                         android:orientation="horizontal"
                         android:layout_marginTop="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:drawableStart="@android:drawable/ic_menu_myplaces"
                             android:text="Hosted by "
                             android:textColor="@color/teal_200"
                             android:textSize="16sp" />
@@ -139,15 +144,16 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="left"
                         android:orientation="horizontal"
                         android:layout_marginTop="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/teal_200"
+                            android:drawableStart="@android:drawable/btn_star_big_on"
                             android:text="Goal: "
+                            android:textColor="@color/teal_200"
                             android:textSize="16sp" />
 
                         <TextView
@@ -187,7 +193,7 @@
                         android:id="@+id/progressBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:progressTint="@color/teal_200"
+                        app:indicatorColor="@color/teal_200"
                         app:trackThickness="10dp"
                         android:layout_marginTop="8dp"/>
 

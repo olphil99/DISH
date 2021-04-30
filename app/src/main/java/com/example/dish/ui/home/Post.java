@@ -10,7 +10,10 @@ public class Post {
     private String picture_url;
     private double goal;
     private double currentProgress;
-
+    private String start;
+    private String end;
+    private String postUrl;
+    private String location;
 
 
     public Post(String creator, int ID, String title, String body, String tags, String type, String picture_url, double goal) {
@@ -23,6 +26,42 @@ public class Post {
         this.picture_url = picture_url;
         this.goal = goal;
         this.currentProgress = 0;
+        this.start = "xx/xx/xx";
+        this.end = "xx/xx/xx";
+        this.postUrl = "";
+        this.location = "";
+    }
+    public Post(String creator, int ID, String title, String body, String tags, String type, String picture_url, double goal, String start, String end) {
+        this.creator = creator;
+        this.ID = ID;
+        this.title = title;
+        this.body = body;
+        this.tags = tags;
+        this.type = type;
+        this.picture_url = picture_url;
+        this.goal = goal;
+        this.currentProgress = 0;
+        this.start = start;
+        this.end = end;
+        this.postUrl = "";
+        this.location = "";
+    }
+
+
+    public Post(String creator, int ID, String title, String body, String tags, String type, String picture_url, double goal, String start, String end, String postUrl , String location) {
+        this.creator = creator;
+        this.ID = ID;
+        this.title = title;
+        this.body = body;
+        this.tags = tags;
+        this.type = type;
+        this.picture_url = picture_url;
+        this.goal = goal;
+        this.currentProgress = 0;
+        this.start = start;
+        this.end = end;
+        this.postUrl = postUrl;
+        this.location = location;
     }
 
     public void setCreator(String creator) {
@@ -57,6 +96,24 @@ public class Post {
         this.goal = goal;
     }
 
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
+
+    public void setPostUrl(String postUrl) {
+        this.postUrl = postUrl;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+
+
     public String getCreator() {
         return creator;
     }
@@ -88,6 +145,23 @@ public class Post {
     public double getGoal() {
         return goal;
     }
+
+    public String getStart() {
+        return start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public String getPostUrl() {
+        return postUrl;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
 
     public double getCurrentProgress() {
         return currentProgress;

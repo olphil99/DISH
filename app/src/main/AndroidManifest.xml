@@ -13,10 +13,14 @@
             android:name=".ui.forum.forumActivity"
             android:parentActivityName=".MainActivity">
         </activity>
+      
+        <activity
+            android:name=".ui.login.ui.login.LoginActivity"
+            android:label="@string/title_activity_login"></activity>
+
         <activity
             android:name=".ui.createPost.CreatePostActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".ui.postDetail.PostActivity"
             android:parentActivityName=".MainActivity">
