@@ -49,8 +49,8 @@ public class DashboardFragment extends Fragment {
         btnGoals = (Button) root.findViewById(R.id.btnGoals);
         btnDonations = (Button) root.findViewById(R.id.btnDonations);
 
-        GridView gridview = (GridView) root.findViewById(R.id.Gv);
-        gridview.setAdapter(new ImageAdapter(this.getActivity()));
+//        GridView gridview = (GridView) root.findViewById(R.id.Gv);
+//        gridview.setAdapter(new ImageAdapter(this.getActivity()));
 
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -58,6 +58,14 @@ public class DashboardFragment extends Fragment {
 //                textView.setText(s);
             }
         });
+
+//        FloatingActionButton loginButton = root.findViewById(R.id.loginButton);
+//        loginButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(v.getContext(), LoginActivity.class));
+//            }
+//        });
 
         return root;
     }

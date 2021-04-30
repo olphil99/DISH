@@ -200,8 +200,8 @@ public class CreatePostActivity extends AppCompatActivity {
                         goal = Double.parseDouble(postDonationAmount.getText().toString());
                         String donationEndDate = postEndDate.getText().toString();
                         String start = new Date().toString().substring(4, 10) + donationEndDate.substring(donationEndDate.indexOf(','));
-                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, "TAG", "donation", url, goal, start, donationEndDate, url, location);
-                        if(Utils.getInstance().addNewPost(post)){
+                        Post post = new Post("DISH", Utils.getAllPosts().size() + 1, title, description, "TAG", "donation", url, goal, start, donationEndDate, url, location);
+                        if(Utils.getInstance().addToRegisteredPosts(post)){
                             Intent postDetailIntent = new Intent(v.getContext(), PostActivity.class);
                             postDetailIntent.putExtra("id", post.getID());
                             v.getContext().startActivity(postDetailIntent);
@@ -215,8 +215,8 @@ public class CreatePostActivity extends AppCompatActivity {
                         String eventDueDate = postStartAndEndDate.getText().toString();
                         String start = eventStartHour + ":" + eventStartMin + " " +  eventDueDate.substring(0, eventDueDate.indexOf("–"));
                         String end = eventEndHour + ":" + eventEndMin + " " + eventDueDate.substring(eventDueDate.indexOf("–")+1);
-                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, "TAG", "event", url, (int) goal, start, end, url, location);
-                        if(Utils.getInstance().addNewPost(post)){
+                        Post post = new Post("DISH", Utils.getAllPosts().size() + 1, title, description, "TAG", "event", url, (int) goal, start, end, url, location);
+                        if(Utils.getInstance().addToRegisteredPosts(post)){
                             Intent postDetailIntent = new Intent(v.getContext(), PostActivity.class);
                             postDetailIntent.putExtra("id", post.getID());
                             v.getContext().startActivity(postDetailIntent);

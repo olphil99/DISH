@@ -41,12 +41,12 @@ public class HomeFragment extends Fragment {
         postsRecView.setAdapter(adapter);
         postsRecView.setLayoutManager(new LinearLayoutManager(root.getContext()));
 
-        // create/add post button
+//         create/add post button
         FloatingActionButton addPostButton = root.findViewById(R.id.add_post_button);
         addPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), CreatePostActivity.class));
+                startActivity(new Intent(v.getContext(), LoginActivity.class));
             }
         });
 
