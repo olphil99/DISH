@@ -13,6 +13,7 @@ public class Post {
     private String start;
     private String end;
     private String postUrl;
+    private String location;
 
 
     public Post(String creator, int ID, String title, String body, String tags, String type, String picture_url, double goal) {
@@ -28,6 +29,7 @@ public class Post {
         this.start = "xx/xx/xx";
         this.end = "xx/xx/xx";
         this.postUrl = "";
+        this.location = "";
     }
     public Post(String creator, int ID, String title, String body, String tags, String type, String picture_url, double goal, String start, String end) {
         this.creator = creator;
@@ -42,7 +44,26 @@ public class Post {
         this.start = start;
         this.end = end;
         this.postUrl = "";
+        this.location = "";
     }
+
+
+    public Post(String creator, int ID, String title, String body, String tags, String type, String picture_url, double goal, String start, String end, String postUrl , String location) {
+        this.creator = creator;
+        this.ID = ID;
+        this.title = title;
+        this.body = body;
+        this.tags = tags;
+        this.type = type;
+        this.picture_url = picture_url;
+        this.goal = goal;
+        this.currentProgress = 0;
+        this.start = start;
+        this.end = end;
+        this.postUrl = postUrl;
+        this.location = location;
+    }
+
     public void setCreator(String creator) {
         this.creator = creator;
     }
@@ -87,6 +108,12 @@ public class Post {
         this.postUrl = postUrl;
     }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+
+
     public String getCreator() {
         return creator;
     }
@@ -129,6 +156,10 @@ public class Post {
 
     public String getPostUrl() {
         return postUrl;
+    }
+
+    public String getLocation() {
+        return location;
     }
 
 
