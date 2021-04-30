@@ -18,8 +18,7 @@ public class Post {
     private String end;
     private String postUrl;
     private String location;
-
-
+  
     public Post(String creator, int ID, String title, String body, ArrayList<Boolean> tags, String type, Uri picture_url, double goal) {
         this.creator = creator;
         this.ID = ID;
@@ -117,7 +116,6 @@ public class Post {
     }
 
 
-
     public String getCreator() {
         return creator;
     }
@@ -161,6 +159,7 @@ public class Post {
     public String getPostUrl() {
         return postUrl;
     }
+
 
     public String getLocation() {
         return location;

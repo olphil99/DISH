@@ -237,5 +237,4 @@
         </com.google.android.material.chip.ChipGroup>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

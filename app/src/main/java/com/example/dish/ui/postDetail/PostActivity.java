@@ -30,9 +30,11 @@ public class PostActivity extends AppCompatActivity {
     private TextView txtTitle, txtStart, txtEnd, txtDescription, txtLocation, txtHost, txtGoal, txtCurrentProgress;
     private Button btAccept, btShare, btDonate;
     private LinearProgressIndicator progressBar;
+    private ProgressBar progressBar2;
     private TextInputLayout txtInputLayout;
     private TextInputEditText txtInputAmount;
     private LinearLayout pdLocationLL;
+
 
 
     private int prog;
@@ -143,7 +145,6 @@ public class PostActivity extends AppCompatActivity {
                 txtCurrentProgress.setText((int) post.getCurrentProgress() + " people are going");
             else
                 txtCurrentProgress.setText((int) post.getCurrentProgress() + " person is going");
-
         }
         prog = (int) (post.getCurrentProgress() / post.getGoal() * 100);
         progressBar.setProgress(prog, true);
