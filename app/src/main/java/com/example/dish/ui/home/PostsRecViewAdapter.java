@@ -28,7 +28,7 @@ import java.util.Objects;
 public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapter.ViewHolder> {
 
     private ArrayList<Post> posts;
-    private final Context context;
+    private Context context;
     public PostsRecViewAdapter(Context context) {
         this.context = context;
     }
@@ -44,11 +44,11 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvTitle.setText(posts.get(position).getTitle());
         if(posts.get(position).getType().equals("donation")) {
-            holder.tvGoal.setText("$" + posts.get(position).getGoal());
+            holder.tvGoal.setText(String.valueOf("$" + posts.get(position).getGoal()));
             holder.imgView.setImageResource(R.mipmap.donation);
         }
         else{
-            holder.tvGoal.setText((int) posts.get(position).getGoal() + " persons");
+            holder.tvGoal.setText(String.valueOf((int)posts.get(position).getGoal() + " persons"));
             holder.imgView.setImageResource(R.mipmap.vlt);
         }
         holder.tvDueDate.setText(posts.get(position).getEnd());
@@ -73,12 +73,10 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvTitle;
-        private final TextView tvGoal;
-        private final TextView tvDueDate;
-        private final CardView parent;
-        private final LinearProgressIndicator progressBar;
-        private final ImageView imgView;
+        private TextView tvTitle, tvGoal, tvDueDate;
+        private CardView parent;
+        private LinearProgressIndicator progressBar;
+        private ImageView imgView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             //TODO : initialize more textview
