@@ -175,7 +175,8 @@ public class CreatePostActivity extends AppCompatActivity {
             btCreatePost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Toast.makeText(getApplicationContext(), "Posted", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreatePostActivity.this, "Post created", Toast.LENGTH_LONG).show();
+                    CreatePostActivity.this.finish();
                 }
             });
         }
