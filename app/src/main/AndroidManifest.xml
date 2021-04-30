@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DISH">
-        <activity android:name=".ui.postDetail.PostActivity"></activity>
+        <activity
+            android:name=".ui.dashboard.DonationsActivity"
+            android:label="@string/title_activity_donations"
+            android:theme="@style/Theme.DISH.NoActionBar"></activity>
+        <activity
+            android:name=".ui.dashboard.GoalActivity"
+            android:label="@string/title_activity_goal"
+            android:theme="@style/Theme.DISH.NoActionBar" />
+        <activity android:name=".ui.postDetail.PostActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
