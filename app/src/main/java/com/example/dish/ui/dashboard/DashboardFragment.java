@@ -1,5 +1,6 @@
 package com.example.dish.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -47,6 +50,22 @@ public class DashboardFragment extends Fragment {
 
         GridView gridview = (GridView) root.findViewById(R.id.Gv);
         gridview.setAdapter(new ImageAdapter(this.getActivity()));
+
+        btnGoals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), GoalActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnDonations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), DonationsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
