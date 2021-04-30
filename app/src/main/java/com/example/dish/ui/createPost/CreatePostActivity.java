@@ -34,7 +34,7 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.timepicker.MaterialTimePicker;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -51,7 +51,7 @@ public class CreatePostActivity extends AppCompatActivity {
     private EditText donationExpDateButton, eventDateRangeButton,
             eventStartTimeButton, eventEndTimeButton , postStartAndEndDate ,postEndDate;
     private TextInputEditText postTitle, postDescription, postUrl, postDonationAmount, postVolunteers, postLocation;
-
+    private Uri img;
     int eventStartHour, eventStartMin, eventEndHour, eventEndMin;
 
     @Override
@@ -90,7 +90,7 @@ public class CreatePostActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View arg0) {
                     Intent i = new Intent(
-                            Intent.ACTION_PICK,
+                            Intent.ACTION_OPEN_DOCUMENT,
                             android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(i, RESULT_LOAD_IMAGE);
                 }
@@ -188,9 +188,9 @@ public class CreatePostActivity extends AppCompatActivity {
 
             /* POST button */
             btCreatePost.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(CreatePostActivity.this, "Post created", Toast.LENGTH_LONG).show();
                     String title = postTitle.getText().toString();
                     String description = postDescription.getText().toString();
                     String url = postUrl.getText().toString();
@@ -200,7 +200,7 @@ public class CreatePostActivity extends AppCompatActivity {
                         goal = Double.parseDouble(postDonationAmount.getText().toString());
                         String donationEndDate = postEndDate.getText().toString();
                         String start = new Date().toString().substring(4, 10) + donationEndDate.substring(donationEndDate.indexOf(','));
-                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, "TAG", "donation", url, goal, start, donationEndDate, url, location);
+                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, "TAG", "donation", img, goal, start, donationEndDate, url, location);
                         if(Utils.getInstance().addNewPost(post)){
                             Intent postDetailIntent = new Intent(v.getContext(), PostActivity.class);
                             postDetailIntent.putExtra("id", post.getID());
@@ -212,10 +212,11 @@ public class CreatePostActivity extends AppCompatActivity {
                     }
                     else {
                         goal = Integer.parseInt(postVolunteers.getText().toString());
+                        String year = ", "+ String.valueOf(LocalDateTime.now().getYear());
                         String eventDueDate = postStartAndEndDate.getText().toString();
-                        String start = eventStartHour + ":" + eventStartMin + " " +  eventDueDate.substring(0, eventDueDate.indexOf("–"));
-                        String end = eventEndHour + ":" + eventEndMin + " " + eventDueDate.substring(eventDueDate.indexOf("–")+1);
-                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, "TAG", "event", url, (int) goal, start, end, url, location);
+                        String start = eventStartHour + ":" + eventStartMin + " " +  eventDueDate.substring(0, eventDueDate.indexOf("–")) + year;
+                        String end = eventEndHour + ":" + eventEndMin + " " + eventDueDate.substring(eventDueDate.indexOf("–")+1) + year;
+                        Post post = new Post("DISH", Utils.getInstance().totalPosts() + 1, title, description, "TAG", "event", img, (int) goal, start, end, url, location);
                         if(Utils.getInstance().addNewPost(post)){
                             Intent postDetailIntent = new Intent(v.getContext(), PostActivity.class);
                             postDetailIntent.putExtra("id", post.getID());
@@ -235,9 +236,12 @@ public class CreatePostActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
-            Uri imageUri = data.getData();
+            img = data.getData();
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                getContentResolver().takePersistableUriPermission (img, Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION); }
+            //img = imageUri;
             ImageView imageView = findViewById(R.id.create_post_img_view);
-            imageView.setImageURI(imageUri);
+            imageView.setImageURI(img);
             imageView.setVisibility(View.VISIBLE);
         }
     }

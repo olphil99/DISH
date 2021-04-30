@@ -1,5 +1,7 @@
 package com.example.dish.ui.home;
 
+import android.net.Uri;
+
 public class Post {
     private String creator;
     private int ID;
@@ -7,7 +9,7 @@ public class Post {
     private String body;
     private String tags;
     private String type;
-    private String picture_url;
+    private Uri picture_url;
     private double goal;
     private double currentProgress;
     private String start;
@@ -16,7 +18,7 @@ public class Post {
     private String location;
 
 
-    public Post(String creator, int ID, String title, String body, String tags, String type, String picture_url, double goal) {
+    public Post(String creator, int ID, String title, String body, String tags, String type, Uri picture_url, double goal) {
         this.creator = creator;
         this.ID = ID;
         this.title = title;
@@ -29,9 +31,9 @@ public class Post {
         this.start = "xx/xx/xx";
         this.end = "xx/xx/xx";
         this.postUrl = "";
-        this.location = "";
+        this.location = "UIUC";
     }
-    public Post(String creator, int ID, String title, String body, String tags, String type, String picture_url, double goal, String start, String end) {
+    public Post(String creator, int ID, String title, String body, String tags, String type, Uri picture_url, double goal, String start, String end) {
         this.creator = creator;
         this.ID = ID;
         this.title = title;
@@ -44,11 +46,11 @@ public class Post {
         this.start = start;
         this.end = end;
         this.postUrl = "";
-        this.location = "";
+        this.location = "UIUC";
     }
 
 
-    public Post(String creator, int ID, String title, String body, String tags, String type, String picture_url, double goal, String start, String end, String postUrl , String location) {
+    public Post(String creator, int ID, String title, String body, String tags, String type, Uri picture_url, double goal, String start, String end, String postUrl , String location) {
         this.creator = creator;
         this.ID = ID;
         this.title = title;
@@ -88,7 +90,7 @@ public class Post {
         this.type = type;
     }
 
-    public void setPicture_url(String picture_url) {
+    public void setPicture_url(Uri picture_url) {
         this.picture_url = picture_url;
     }
 
@@ -138,7 +140,7 @@ public class Post {
         return type;
     }
 
-    public String getPicture_url() {
+    public Uri getPicture_url() {
         return picture_url;
     }
 
