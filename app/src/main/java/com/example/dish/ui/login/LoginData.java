@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class LoginData {
 
     private static LoginData instance;
-    private static ArrayList<User> users;
+    private static ArrayList<User> users = new ArrayList<User>();
 
     private ArrayList<String> getUsernames() {
         ArrayList<String> usernames = new ArrayList<String>();
@@ -25,7 +25,7 @@ public class LoginData {
         }
         else {
             instance = new LoginData();
-            return  instance;
+            return instance;
         }
     }
 

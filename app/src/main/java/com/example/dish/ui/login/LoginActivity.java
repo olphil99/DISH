@@ -12,13 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.dish.MainActivity;
 import com.example.dish.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 
 public class LoginActivity extends AppCompatActivity {
     EditText username;
@@ -36,15 +33,21 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 User user = new User(username.getText().toString(), password.getText().toString());
-                if (LoginData.getInstance().addUser(user)) {
-                    Toast.makeText(getBaseContext(), "login successful ^_^", Toast.LENGTH_SHORT).show();
-                    Intent mainActivityIntent = new Intent(v.getContext(), MainActivity.class);
-                    v.getContext().startActivity(mainActivityIntent);
-                } else {
-                    Toast.makeText(getBaseContext(), "oh no :(", Toast.LENGTH_SHORT).show();
-                }
-            }
+                LoginData.getInstance().addUser(user);
+                Toast.makeText(getBaseContext(), "login successful ^_^", Toast.LENGTH_SHORT).show();
+//                if (LoginData.getInstance().addUser(user)) {
+//                    Toast.makeText(getBaseContext(), "login successful ^_^", Toast.LENGTH_SHORT).show();
+//                    Intent mainActivityIntent = new Intent(v.getContext(), MainActivity.class);
+//                    v.getContext().startActivity(mainActivityIntent);
+//                } else {
+//                    Toast.makeText(getBaseContext(), "login failed ^w^", Toast.LENGTH_SHORT).show();
+//                }
+                SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putBoolean("activity_executed", true);
+                edt.commit();
 
+            }
         });
     }
 }

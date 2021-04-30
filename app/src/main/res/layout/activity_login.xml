@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cultured"
+    android:background="#3C0DEAD4"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -14,48 +14,29 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="134dp"
+        android:layout_height="53dp"
         android:layout_gravity="start"
         android:layout_marginBottom="64dp"
         android:layout_marginEnd="48dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/teal_200"
-        android:enabled="false"
-        android:longClickable="false"
-        android:shadowColor="@color/persian_plum"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="@font/amatic_sc"
+        android:shadowColor="@color/purple_200"
         android:text="@string/action_sign_in"
-        android:textColor="@color/persian_plum"
+        android:textAllCaps="false"
+        android:textColor="#FFFEFD"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.02"
         app:rippleColor="@color/beau_blue"
-        app:strokeColor="@color/persian_plum" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/teal_200"
-        android:backgroundTintMode="screen"
-        android:foregroundTint="@color/persian_plum"
-        android:foregroundTintMode="screen"
-        android:hint="@string/prompt_password"
-        android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
-        android:textColor="@color/persian_plum"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:strokeColor="@color/purple_200" />
 
     <EditText
         android:id="@+id/username"
@@ -63,19 +44,65 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
-        android:backgroundTint="@color/teal_200"
-        android:backgroundTintMode="screen"
+        android:layout_marginTop="140dp"
+        android:backgroundTint="@color/purple_200"
+        android:backgroundTintMode="src_in"
+        android:fontFamily="@font/roboto_medium"
         android:foregroundTint="@color/persian_plum"
         android:foregroundTintMode="screen"
         android:hint="@string/prompt_email"
         android:inputType="text"
         android:selectAllOnFocus="true"
-        android:textColor="@color/persian_plum"
+        android:shadowColor="@color/aeroblue"
+        android:textAllCaps="false"
+        android:textColor="#ED8A28"
+        android:textColorHighlight="@color/aeroblue"
+        android:textCursorDrawable="@color/aeroblue"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/purple_200"
+        android:backgroundTintMode="src_in"
+        android:fontFamily="@font/roboto_medium"
+        android:foregroundTint="@color/persian_plum"
+        android:foregroundTintMode="screen"
+        android:hint="@string/prompt_password"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        android:shadowColor="@color/aeroblue"
+        android:textAllCaps="false"
+        android:textColor="#F08B28"
+        android:textColorHighlight="@color/aeroblue"
+        android:textCursorDrawable="@color/aeroblue"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="193dp"
+        android:layout_height="201dp"
+        android:layout_marginBottom="120dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="74dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:srcCompat="@mipmap/ic_cat_dish" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -93,4 +120,35 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:backgroundTint="@color/purple_200"
+        android:backgroundTintMode="screen"
+        android:fadingEdge="horizontal"
+        android:fontFamily="@font/amatic_sc"
+        android:gravity="center"
+        android:text="register and login"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#49919D"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<style name="Theme.DISH" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->
+<!--<item name="colorPrimary">@color/aeroblue</item>-->
+<!--<item name="colorPrimaryVariant">@color/rosedust</item>-->
+<!--<item name="colorSecondary">@color/orange</item>-->
+<!--<item name="colorSecondaryVariant">@color/cameopink</item>-->
+<!--<item name="colorOnSecondary">@color/tancrayola</item>-->
+<!--<item name="android:statusBarColor">@color/dimgrey</item>-->
+<!--</style>-->

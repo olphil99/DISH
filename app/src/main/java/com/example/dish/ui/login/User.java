@@ -9,29 +9,29 @@ public class User {
 
     private String username;
     private String password;
-    private ArrayList<Post> posts;
+//    private ArrayList<Post> posts;
 
-    private ArrayList<Post> getPostByUser(String user) {
-        ArrayList<Post> posts = new ArrayList<Post>();
-        for (Post p : Utils.getAllPosts()) {
-            if (p.getCreator() == user) {
-                posts.add(p);
-            }
-        }
-        return posts;
-    }
+//    private ArrayList<Post> getPostByUser(String user) {
+//        ArrayList<Post> posts = new ArrayList<Post>();
+//        for (Post p : Utils.getAllPosts()) {
+//            if (p.getCreator() == user) {
+//                posts.add(p);
+//            }
+//        }
+//        return posts;
+//    }
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.posts = getPostByUser(username);
+//        this.posts = getPostByUser(username);
     }
 
     public String getUsername() {
         return username;
     }
 
-    public ArrayList<Post> getPosts() {
-        return posts;
-    }
+//    public ArrayList<Post> getPosts() {
+//        return posts;
+//    }
 }
