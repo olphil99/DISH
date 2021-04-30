@@ -1,5 +1,6 @@
 package com.example.dish.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dish.R;
+import com.example.dish.ui.createPost.CreatePostActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -31,18 +34,21 @@ public class HomeFragment extends Fragment {
             }
         });*/
         postsRecView = root.findViewById(R.id.postsRecView);
-        ArrayList<Post> posts = new ArrayList<>();
-        posts.add(new Post("Amy", 1, "NEED FISH ON DISH", "This is a very long description", "#FISH", "donation", "https", 99));
-        posts.add(new Post("Food Bank", 2, "FOOD FOR MOOD", "This is a very long description", "#FOOD", "event", "https", 100));
-        posts.add(new Post("TTP", 3, "SHOW ME THE MONEY", "This is a very long description", "#MONEY", "donation", "https", 10000));
-        posts.add(new Post("Brian", 4, "FREE MASKS", "This is a very long description", "#MASK", "event", "https", 10));
-        posts.add(new Post("Emily", 5, "STUDIO", "This is a very long description", "#AAA", "event", "https", 10));
-        posts.add(new Post("Emily2", 6, "TEST", "This is a very long description", "#AAA", "event", "https", 10));
 
         PostsRecViewAdapter adapter = new PostsRecViewAdapter(root.getContext());
-        adapter.setPosts(posts);
+        adapter.setPosts(Utils.getInstance().getAllPosts());
         postsRecView.setAdapter(adapter);
         postsRecView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+
+        // create/add post button
+        FloatingActionButton addPostButton = root.findViewById(R.id.add_post_button);
+        addPostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), CreatePostActivity.class));
+            }
+        });
+
         return root;
     }
 }

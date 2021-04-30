@@ -23,9 +23,4 @@
         android:label="@string/title_forum"
         tools:layout="@layout/fragment_forum" />
 
-    <fragment
-        android:id="@+id/navigation_create_post"
-        android:name="com.example.dish.ui.createPost.createPostFragment"
-        android:label="@string/title_create_post"
-        tools:layout="@layout/fragment_create_post" />
 </navigation>
