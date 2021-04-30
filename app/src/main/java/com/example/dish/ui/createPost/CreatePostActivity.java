@@ -211,5 +211,5 @@ public class CreatePostActivity extends AppCompatActivity {
         eventEndTimeButton = findViewById(R.id.create_post_event_end_time);
     }
 
-    public CreatePostActivity(){};
+    public CreatePostActivity(){}
 }
