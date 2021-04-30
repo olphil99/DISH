@@ -257,7 +257,6 @@ public class CreatePostActivity extends AppCompatActivity {
         eventDateRangeButton = findViewById(R.id.create_post_event_date_range);
         eventStartTimeButton = findViewById(R.id.create_post_event_start_time);
         eventEndTimeButton = findViewById(R.id.create_post_event_end_time);
-
         postTitle = findViewById(R.id.create_post_title);
         postDescription = findViewById(R.id.create_post_description);
         postUrl = findViewById(R.id.create_post_url);

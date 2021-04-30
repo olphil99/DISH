@@ -1,16 +1,16 @@
-package com.example.dish;
-
-import java.sql.*;
-
-import android.os.AsyncTask;
-
-public class dbactivity extends android.app.Activity {
-
+//package com.example.dish;
+//
+//import java.sql.*;
+//
+//import android.os.AsyncTask;
+//
+//public class dbactivity extends android.app.Activity {
+//
 //    private class psqlcon extends AsyncTask<Void, Void, Void> {
 //        public psqlcon() {
 //            super();
 //        }
-
+//
 //        @Override
 //        protected Void doInBackground(Void... voids) {
 //            Connection conn = null;
@@ -55,9 +55,11 @@ public class dbactivity extends android.app.Activity {
 //            } catch (SQLException se) {
 //                se.printStackTrace();
 //            }
+//
+//            return null;
 //        }
 //    }
-}
-
-
-
+//};
+//
+//
+//
