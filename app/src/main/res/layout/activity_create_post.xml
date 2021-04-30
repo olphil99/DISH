@@ -218,8 +218,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Recurring event"
-                        android:layout_marginTop="10dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu" >
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu" >
 
                         <AutoCompleteTextView
                             android:id="@+id/create_post_recurrence_dropdown"
@@ -299,48 +298,90 @@
                         android:text="Select Tags" />
 
                     <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/chipGroup"
+                        android:id="@+id/tag_chipGroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:startIconDrawable="@drawable/ic_label_black"
                         app:startIconContentDescription="label icon">
 
                         <com.google.android.material.chip.Chip
-                            android:id="@+id/chip1"
+                            android:id="@+id/tag_chip_emergency"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rent"
-                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                            android:text="Emergency" />
+
                         <com.google.android.material.chip.Chip
-                            android:id="@+id/chip2"
+                            android:id="@+id/tag_chip_animals"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Medical"
-                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                            android:text="Animals" />
+
                         <com.google.android.material.chip.Chip
-                            android:id="@+id/chip3"
+                            android:id="@+id/tag_chip_medical"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Education"
-                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                            android:text="Medical" />
+
                         <com.google.android.material.chip.Chip
-                            android:id="@+id/chip4"
+                            android:id="@+id/tag_chip_business"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pet"
-                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                            android:layout_marginVertical="3dp"
+                            android:text="Business" />
+
                         <com.google.android.material.chip.Chip
-                            android:id="@+id/chip5"
+                            android:id="@+id/tag_chip_community"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Memorial"
-                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                            android:text="Community" />
+
                         <com.google.android.material.chip.Chip
-                            android:id="@+id/chip6"
+                            android:id="@+id/tag_chip_environment"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Food"
-                            style="@style/Widget.MaterialComponents.Chip.Choice" />
+                            android:text="Environment" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/tag_chip_nonprofit"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nonprofit" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/tag_chip_financial"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Financial" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/tag_chip_memorial"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Memorial" />
+
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/tag_chip_education"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Education" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/tag_chip_other"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Other" />
 
                     </com.google.android.material.chip.ChipGroup>
 

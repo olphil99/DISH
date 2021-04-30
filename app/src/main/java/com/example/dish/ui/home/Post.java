@@ -2,12 +2,14 @@ package com.example.dish.ui.home;
 
 import android.net.Uri;
 
+import java.util.ArrayList;
+
 public class Post {
     private String creator;
     private int ID;
     private String title;
     private String body;
-    private String tags;
+    private ArrayList<Boolean> tags;
     private String type;
     private Uri picture_url;
     private double goal;
@@ -18,7 +20,7 @@ public class Post {
     private String location;
 
 
-    public Post(String creator, int ID, String title, String body, String tags, String type, Uri picture_url, double goal) {
+    public Post(String creator, int ID, String title, String body, ArrayList<Boolean> tags, String type, Uri picture_url, double goal) {
         this.creator = creator;
         this.ID = ID;
         this.title = title;
@@ -33,7 +35,7 @@ public class Post {
         this.postUrl = "";
         this.location = "UIUC";
     }
-    public Post(String creator, int ID, String title, String body, String tags, String type, Uri picture_url, double goal, String start, String end) {
+    public Post(String creator, int ID, String title, String body, ArrayList<Boolean> tags, String type, Uri picture_url, double goal, String start, String end) {
         this.creator = creator;
         this.ID = ID;
         this.title = title;
@@ -50,7 +52,7 @@ public class Post {
     }
 
 
-    public Post(String creator, int ID, String title, String body, String tags, String type, Uri picture_url, double goal, String start, String end, String postUrl , String location) {
+    public Post(String creator, int ID, String title, String body, ArrayList<Boolean> tags, String type, Uri picture_url, double goal, String start, String end, String postUrl , String location) {
         this.creator = creator;
         this.ID = ID;
         this.title = title;
@@ -82,7 +84,7 @@ public class Post {
         this.body = body;
     }
 
-    public void setTags(String tags) {
+    public void setTags(ArrayList<Boolean> tags) {
         this.tags = tags;
     }
 
@@ -132,7 +134,7 @@ public class Post {
         return body;
     }
 
-    public String getTags() {
+    public ArrayList<Boolean> getTags() {
         return tags;
     }
 
