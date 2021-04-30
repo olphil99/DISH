@@ -6,9 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,8 +46,8 @@ public class DashboardFragment extends Fragment {
         btnGoals = (Button) root.findViewById(R.id.btnGoals);
         btnDonations = (Button) root.findViewById(R.id.btnDonations);
 
-        GridView gridview = (GridView) root.findViewById(R.id.Gv);
-        gridview.setAdapter(new ImageAdapter(this.getActivity()));
+//        GridView gridview = (GridView) root.findViewById(R.id.Gv);
+//        gridview.setAdapter(new ImageAdapter(this.getActivity()));
 
         btnGoals.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -67,6 +67,7 @@ public class Utils {
     public boolean removeRegisteredPosts(Post post) {
         post.setCurrentProgress(post.getCurrentProgress() - 1);
         return registeredPosts.remove(post); }
+
     public int totalPosts() {
         return allPosts.size();
     }
