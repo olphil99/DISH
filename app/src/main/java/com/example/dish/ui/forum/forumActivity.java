@@ -1,6 +1,7 @@
 package com.example.dish.ui.forum;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,6 +19,10 @@ public class forumActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forum_activity);
+        Intent intent = getIntent();
+        String name = intent.getExtras().getString("name");
+        TextView fName = (TextView) findViewById(R.id.forumName);
+        fName.setText(name);
         Button subscribe = (Button) findViewById(R.id.subscribe);
         subscribe.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
