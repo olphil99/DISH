@@ -14,3 +14,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+postgresql-42.2.20.jre7
