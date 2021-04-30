@@ -61,29 +61,12 @@ public class Post {
         this.picture_url = picture_url;
         this.goal = goal;
         this.currentProgress = 0;
-        this.start = "xx/xx/xx";
-        this.end = "xx/xx/xx";
-        this.postUrl = postUrl;
-        this.location = location;
-    }
-    public PostString creator, int ID, String title, String body, ArrayList<Boolean> tags, String type, Uri picture_url, double goal, String start, String end, String postUrl , String location) {
-        this.creator = creator;
-        this.ID = ID;
-        this.title = title;
-        this.body = body;
-        this.tags = tags;
-        this.type = type;
-        this.picture_url = picture_url;
-        this.goal = goal;
-        this.currentProgress = 0;
-        this.start = start;
-        this.end = end;
-        this.postUrl = "";
         this.start = start;
         this.end = end;
         this.postUrl = postUrl;
         this.location = location;
     }
+
     public void setCreator(String creator) {
         this.creator = creator;
     }
