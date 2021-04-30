@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel;
 
 public class ForumViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private MutableLiveData<String> mText;
 
     public ForumViewModel() {
         mText = new MutableLiveData<>();
