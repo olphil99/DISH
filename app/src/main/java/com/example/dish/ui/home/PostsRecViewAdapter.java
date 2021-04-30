@@ -42,16 +42,20 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //TODO: setText for more textView
         holder.tvTitle.setText(posts.get(position).getTitle());
-
         if(posts.get(position).getType().equals("donation")) {
-            holder.tvGoal.setText(String.valueOf("$" + posts.get(position).getGoal()));
-            holder.imgView.setImageResource(R.mipmap.donation);
+            holder.tvGoal.setText("$" + posts.get(position).getGoal());
+            if(posts.get(position).getPicture_url() != null)
+                holder.imgView.setImageURI(posts.get(position).getPicture_url());
+            else
+                holder.imgView.setImageResource(R.mipmap.donation);
         }
         else{
-            holder.tvGoal.setText(String.valueOf((int)posts.get(position).getGoal() + " persons"));
-            holder.imgView.setImageResource(R.mipmap.vlt);
+            holder.tvGoal.setText((int) posts.get(position).getGoal() + " persons");
+            if(posts.get(position).getPicture_url() != null)
+                holder.imgView.setImageURI(posts.get(position).getPicture_url());
+            else
+                holder.imgView.setImageResource(R.mipmap.vlt);
         }
         holder.tvDueDate.setText(posts.get(position).getEnd());
         holder.parent.setOnClickListener(v -> {
@@ -81,7 +85,6 @@ public class PostsRecViewAdapter extends RecyclerView.Adapter<PostsRecViewAdapte
         private ImageView imgView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            //TODO : initialize more textview
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvGoal = itemView.findViewById(R.id.tvGoal);
             parent = itemView.findViewById(R.id.cvPost);

@@ -7,6 +7,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.content.Intent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.dish.R;
+import com.example.dish.ui.forum.forumActivity;
 
 public class ForumFragment extends Fragment {
 
@@ -48,6 +51,15 @@ public class ForumFragment extends Fragment {
             tv.setTextColor(Color.BLACK);
             tv.setClickable(true);
             tv.setFocusable(true);
+
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent sendM = new Intent(v.getContext(), forumActivity.class);
+                    sendM.putExtra("name", forumTitle);
+                    startActivity(sendM);
+                }
+            });
 
             // add to screen
             forumMain.addView(tv);

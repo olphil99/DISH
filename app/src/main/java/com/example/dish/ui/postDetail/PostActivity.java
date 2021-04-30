@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,8 @@ public class PostActivity extends AppCompatActivity {
     private ProgressBar progressBar2;
     private TextInputLayout txtInputLayout;
     private TextInputEditText txtInputAmount;
+    private LinearLayout pdLocationLL;
+
 
 
     private int prog;
@@ -50,11 +53,17 @@ public class PostActivity extends AppCompatActivity {
                 setData(post);
                 if (post.getType().equals("donation")) {
                     btAccept.setVisibility(View.GONE);
-                    ivPostPicture.setImageResource(R.mipmap.donation);
+                    if(post.getPicture_url() != null)
+                        ivPostPicture.setImageURI(post.getPicture_url());
+                    else
+                        ivPostPicture.setImageResource(R.mipmap.donation);
                 } else {
                     btDonate.setVisibility(View.GONE);
                     txtInputLayout.setVisibility(View.GONE);
-                    ivPostPicture.setImageResource(R.mipmap.vlt);
+                    if(post.getPicture_url() != null)
+                        ivPostPicture.setImageURI(post.getPicture_url());
+                    else
+                        ivPostPicture.setImageResource(R.mipmap.vlt);
                     handleAcceptedPost(post);
                 }
 
@@ -75,7 +84,10 @@ public class PostActivity extends AppCompatActivity {
                         else
                             Toast.makeText(PostActivity.this, "Err...something wrong", Toast.LENGTH_SHORT);
                     }
-                    txtCurrentProgress.setText((int) post.getCurrentProgress() + " people are going");
+                    if((int) post.getCurrentProgress() == 0 ||(int) post.getCurrentProgress() > 1)
+                        txtCurrentProgress.setText((int) post.getCurrentProgress() + " people are going");
+                    else
+                        txtCurrentProgress.setText((int) post.getCurrentProgress() + " person is going");
                     prog = (int) (post.getCurrentProgress() / post.getGoal() * 100);
                     progressBar.setProgress(prog, true);
                 });
@@ -121,13 +133,18 @@ public class PostActivity extends AppCompatActivity {
         txtHost.setText(post.getCreator());
         txtStart.setText(post.getStart());
         txtEnd.setText(post.getEnd());
+        txtLocation.setText(post.getLocation());
         if(post.getType().equals("donation")) {
             txtGoal.setText("$" + post.getGoal());
             txtCurrentProgress.setText("$" + post.getCurrentProgress());
+            pdLocationLL.setVisibility(View.GONE);
         }
         else {
             txtGoal.setText((int) post.getGoal() + " volunteers");
-            txtCurrentProgress.setText((int) post.getCurrentProgress() + " people are going");
+            if((int) post.getCurrentProgress() == 0 || (int) post.getCurrentProgress() > 1)
+                txtCurrentProgress.setText((int) post.getCurrentProgress() + " people are going");
+            else
+                txtCurrentProgress.setText((int) post.getCurrentProgress() + " person is going");
         }
         prog = (int) (post.getCurrentProgress() / post.getGoal() * 100);
         progressBar.setProgress(prog, true);
@@ -148,6 +165,14 @@ public class PostActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         txtInputLayout = findViewById(R.id.oTxtFieldAmount);
         txtInputAmount = findViewById(R.id.txtInputAmount);
+        pdLocationLL = findViewById(R.id.postDetailLocationLL);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(PostActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override

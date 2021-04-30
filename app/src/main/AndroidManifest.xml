@@ -4,12 +4,28 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_cat_dish"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_cat_dish_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DISH">
-        <activity android:name=".ui.postDetail.PostActivity"></activity>
+        <activity
+            android:name=".ui.forum.forumActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".ui.createPost.CreatePostActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".ui.postDetail.PostActivity"
+            android:parentActivityName=".MainActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
