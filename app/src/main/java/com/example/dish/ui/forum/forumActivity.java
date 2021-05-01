@@ -16,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.dish.R;
+import com.example.dish.ui.login.LoginData;
+
+import java.util.ArrayList;
 
 
 public class forumActivity extends AppCompatActivity {
@@ -42,13 +45,15 @@ public class forumActivity extends AppCompatActivity {
             }
         });
 
+        ArrayList<String> usernames = LoginData.getInstance().getUsernames();
+        String username = usernames.get(usernames.size()-1);
         EditText editText = (EditText) findViewById(R.id.message);
-        EditText nameText = (EditText) findViewById(R.id.name_input);
+//        EditText nameText = (EditText) findViewById(R.id.name_input);
         LinearLayout display = (LinearLayout) findViewById(R.id.display);
         Button send = (Button) findViewById(R.id.sendb);
         send.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String idname = nameText.getText().toString();
+                String idname = username; // nameText.getText().toString();
                 String message = editText.getText().toString();
 
                 LinearLayout temp = new LinearLayout(display.getContext());
@@ -78,7 +83,7 @@ public class forumActivity extends AppCompatActivity {
 
                 // clear input
                 editText.setText("");
-                nameText.setText("");
+//                nameText.setText("");
 
                 // default scroll to bottom of message history
                 final ScrollView scrollview = ((ScrollView) findViewById(R.id.message_history));
