@@ -1,17 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DonationsActivity">
 
+<!--    <include layout="@layout/content_donations" />-->
 
-    <include layout="@layout/content_donations" />
+    <LinearLayout
+        android:id="@+id/donation_history_labels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shape_rectangle_rounded"
+            android:padding="10dp"
+            android:layout_marginHorizontal="1dp"
+            android:gravity="center_horizontal"
+            android:text="User/Org"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shape_rectangle_rounded"
+            android:padding="10dp"
+            android:layout_marginHorizontal="1dp"
+            android:gravity="center_horizontal"
+            android:text="Amount"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shape_rectangle_rounded"
+            android:padding="10dp"
+            android:layout_marginHorizontal="1dp"
+            android:gravity="center_horizontal"
+            android:text="Date donated"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/donationsRv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginVertical="60dp"/>
+
+    <LinearLayout
+        android:id="@+id/donationSum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/shape_rectangle_rounded">
+
+        <TextView
+            android:id="@+id/donation_total_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:layout_marginHorizontal="1dp"
+            android:gravity="center_horizontal"
+            android:text="Total donations:"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/totalDonation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:layout_marginHorizontal="1dp"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
