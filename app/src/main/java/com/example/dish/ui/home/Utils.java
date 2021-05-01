@@ -7,7 +7,7 @@ public class Utils {
     private static ArrayList<Post> allPosts;
     private static ArrayList<Post> registeredPosts;
 
-    private Utils() {
+    public Utils() {
         if (allPosts == null) {
             allPosts = new ArrayList<>();
             initData();
