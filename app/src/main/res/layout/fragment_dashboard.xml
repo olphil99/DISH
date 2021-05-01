@@ -113,6 +113,22 @@
                     android:text="Kallen"
                     android:textSize="30sp"
                     android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/orange"
+                    android:backgroundTint="@color/cameopink"
+                    android:backgroundTintMode="add"
+                    android:text="logout"
+                    android:textColor="@color/black"
+                    app:iconTint="@color/dimgrey"
+                    app:strokeColor="#FFFFFF" />
             </RelativeLayout>
 
 

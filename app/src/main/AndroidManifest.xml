@@ -13,7 +13,8 @@
         <activity
             android:name=".ui.dashboard.DonationsActivity"
             android:label="@string/title_activity_donations"
-            android:theme="@style/Theme.DISH.NoActionBar"></activity>
+            android:theme="@style/Theme.DISH.NoActionBar">
+        </activity>
         <activity
             android:name=".ui.dashboard.GoalActivity"
             android:label="@string/title_activity_goal"
@@ -44,7 +45,7 @@
         </activity>
 
         <activity
-            android:name=".splash">
+            android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
