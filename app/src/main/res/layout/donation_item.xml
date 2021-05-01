@@ -26,29 +26,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="BLM Org" />
+                android:text="BLM Org"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="$100.00" />
+                android:text="$100.00"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
                 android:layout_weight="1"
                 android:text="10/20/20"
-                android:layout_marginLeft="30dp"/>
+                android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/button"
+            <TextView
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:text="Details" />
+                android:layout_weight="1"
+                android:text="DI$H"
+                android:textSize="18sp" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
