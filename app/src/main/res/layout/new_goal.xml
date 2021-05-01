@@ -1,27 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/newTaskText"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:hint="New Goal" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/newTaskButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/newTaskText"
-        android:textSize="16sp"
-        android:layout_alignParentEnd="true"
-        android:background="@android:color/transparent"
-        android:text="Save"
-        android:textAllCaps="false"
-        android:textColor="@android:color/darker_gray" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newTaskText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:enabled="true"
+                android:hint="New Goal"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:boxBackgroundColor="@color/beau_blue"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/goal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:maxLines="1"
+                    android:textColor="#FFFFFF"
+                    android:visibility="visible" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/newTaskButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
+                android:background="@android:color/transparent"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

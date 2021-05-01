@@ -10,7 +10,7 @@ public class LoginData {
     private static LoginData instance;
     private static ArrayList<User> users = new ArrayList<User>();
 
-    private ArrayList<String> getUsernames() {
+    public ArrayList<String> getUsernames() {
         ArrayList<String> usernames = new ArrayList<String>();
         for (User u: users) {
             usernames.add(u.getUsername());
@@ -42,5 +42,6 @@ public class LoginData {
         users.add(u);
         return true;
     }
+
 }
 

@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.dish.R;
 
@@ -39,12 +41,21 @@ public class DonationsActivity extends AppCompatActivity {
 
         donationsRv = this.findViewById(R.id.donationsRv);
         ArrayList<Donation> donations = new ArrayList<>();
-        donations.add(new Donation("BLM", "10/04/2020", "$100.00"));
-        donations.add(new Donation("Food Bank", "1/24/2021", "$150.00"));
+        donations.add(new Donation("BLM", "10/04/2020", 100.00F));
+        donations.add(new Donation("Food Bank", "01/24/2021", 150.00F));
+        donations.add(new Donation("Amy", "02/08/2021", 50.00F));
 
+        float totalDonation = 0;
+        for (int i = 0; i < donations.size(); i++) {
+            Donation donation = donations.get(i);
+            totalDonation = totalDonation + donation.getAmount();
+        }
 
         DonationsAdapter adapter = new DonationsAdapter(donations);
         donationsRv.setAdapter(adapter);
         donationsRv.setLayoutManager(new LinearLayoutManager(this));
+
+        TextView tvTotalAmount = this.findViewById(R.id.totalDonation);
+        tvTotalAmount.setText("$"+Float.toString(totalDonation));
     }
 }

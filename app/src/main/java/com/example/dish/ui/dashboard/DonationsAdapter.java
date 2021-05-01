@@ -72,7 +72,7 @@ public class DonationsAdapter extends RecyclerView.Adapter<DonationsAdapter.View
         // contents of the view with that element
         viewHolder.getName().setText(localDataSet.get(position).getName());
         viewHolder.getDate().setText(localDataSet.get(position).getDate());
-        viewHolder.getAmount().setText(localDataSet.get(position).getAmount());
+        viewHolder.getAmount().setText("$"+Float.toString(localDataSet.get(position).getAmount()));
     }
 
     // Return the size of your dataset (invoked by the layout manager)

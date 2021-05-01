@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.dish.R;
 import com.example.dish.ui.login.LoginActivity;
+import com.example.dish.ui.login.LoginData;
+
+import java.util.ArrayList;
 
 public class DashboardFragment extends Fragment {
 
@@ -49,6 +53,11 @@ public class DashboardFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
         btnGoals = (Button) root.findViewById(R.id.btnGoals);
         btnDonations = (Button) root.findViewById(R.id.btnDonations);
+
+        ArrayList<String> usernames = LoginData.getInstance().getUsernames();
+        String username = usernames.get(usernames.size()-1);
+        TextView tvUsername = root.findViewById(R.id.user_profile_name);
+        tvUsername.setText(username);
 
 //        GridView gridview = (GridView) root.findViewById(R.id.Gv);
 //        gridview.setAdapter(new ImageAdapter(this.getActivity()));

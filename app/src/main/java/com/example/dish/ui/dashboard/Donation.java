@@ -3,9 +3,9 @@ package com.example.dish.ui.dashboard;
 public class Donation {
     private String name;
     private String date;
-    private String amount;
+    private float amount;
 
-    public Donation(String name, String date, String amount) {
+    public Donation(String name, String date, float amount) {
         this.name = name;
         this.date = date;
         this.amount = amount;
@@ -19,7 +19,7 @@ public class Donation {
         return date;
     }
 
-    public String getAmount() {
+    public float getAmount() {
         return amount;
     }
 
@@ -31,7 +31,7 @@ public class Donation {
         this.date = date;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 
