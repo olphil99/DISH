@@ -15,4 +15,12 @@
     <color name="persian_plum">#66141B</color>
     <color name="red">#C9B11111</color>
     <color name="green">#CE4CAF50</color>
+    <color name="dimgrey">#666b6a</color>
+    <color name="aeroblue">#c7efcf</color>
+    <color name="tancrayola">#df9b6d</color>
+    <color name="orange_e">#bc2c1a</color>
+    <color name ="orange">#AA5B00</color>
+    <color name="cameopink">#d4afb9</color>
+    <color name="rosedust">#9f5669</color>
+
 </resources>

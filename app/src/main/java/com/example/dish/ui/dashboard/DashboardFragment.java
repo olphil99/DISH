@@ -1,14 +1,15 @@
 package com.example.dish.ui.dashboard;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +20,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.dish.R;
+import com.example.dish.ui.login.LoginActivity;
 
 public class DashboardFragment extends Fragment {
 
@@ -48,8 +50,8 @@ public class DashboardFragment extends Fragment {
         btnGoals = (Button) root.findViewById(R.id.btnGoals);
         btnDonations = (Button) root.findViewById(R.id.btnDonations);
 
-        GridView gridview = (GridView) root.findViewById(R.id.Gv);
-        gridview.setAdapter(new ImageAdapter(this.getActivity()));
+//        GridView gridview = (GridView) root.findViewById(R.id.Gv);
+//        gridview.setAdapter(new ImageAdapter(this.getActivity()));
 
         btnGoals.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +73,16 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onChanged(@Nullable String s) {
 //                textView.setText(s);
+            }
+        });
+
+        Button logout = (Button) root.findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                Toast.makeText(view.getContext(), "you are now logged out ^_^", Toast.LENGTH_SHORT).show();
             }
         });
         return root;
